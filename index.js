@@ -6,13 +6,16 @@ import anime from './anime.js'
 //<drop Top bar, show online/offline>
 //? -> ken
 //Hoy! maghimu daw ta group message, ready namu? (with subtitle)
-//(Y) -> jake, shine, kuting, bess, jp, kath, denz, charles, em, chrish
-//Okay let's make this one quick.
+//(Y) -> jake, shine, kuting, bess, jp, kath, denz, charles, em, 
+//Whatever man -> chrish
+//Nice.
+//Okay, let's make this one quick.
 //.
 //.
-//Hello,
+//.
+//Hello World,
 //We are batch 19.
-//Let us start with some throwbacks.
+//To start here are some throwbacks.
 //<pic><pic><pic>
 //(puke) "gross"? <sticker>
 //I know right?,...hahahaha
@@ -20,16 +23,17 @@ import anime from './anime.js'
 //I belive you guys have something to say.
 //<pic> message X10
 //insert ken/mark/jessie reactions
-//we done?
-//ok good.
-//phew! amazing 5 years.
+//We done?
+//Ok good.
+//Phew! amazing 5 years, congrats!
 //otsukaresama deshita minna! <sticker>
-//before i end this, I would like to say thanks to 
+//Before i end this, I would like to say thanks to 
 //--kyasu for our christmas dinner this 25th!
-//--bossing for the visit *soon
+//--bossing for the visit *soon - chicken joy please.
 //--bessie & shine for the disgusting pics!
 //--marvel for the new avengers movie
-//--DC for trying :D 笑
+//--DC for trying :D 
+//--笑
 //Now, i'll leave you with a slideshow of our more recent pics.
 //enjoi!
 //bye bye!
@@ -83,6 +87,8 @@ import anime from './anime.js'
 */
 /*********************Scenes************************/
 var Scenes = {
+  timeline: 0,
+  
   getScene: ()=>{
     return m("#messages",
       [
