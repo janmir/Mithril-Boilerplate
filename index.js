@@ -1,6 +1,9 @@
 import m from "./mithril.js"
 import anime from './anime.js'
 
+/*********************SVGs************************/
+import back from './images/back.svg'
+
 /*********************Flow************************/
 //Lol
 //<drop Top bar, show online/offline>
@@ -92,8 +95,13 @@ var Scenes = {
   getScene: ()=>{
     return m("#messages",
       [
-        m(Message, {isLeft: true}),
-        m(Message, {isLeft: false}),
+        m(Message, {msg: "This is a sample sentence.", isLeft: true, name: "Jan Miranda"}),
+        m(Message, {msg: "This one is supposed to be longer but i can't think of any words to write anymore. Sad, really sad.", isLeft: false, name: "Jan Miranda"}),
+        m(Text, {text: "Jan", sub: "is now offline"}),
+        m(Text, {text: "Kuting", sub: "is now offline"}),
+        m(Text, {text: "Kennron", sub: "is now offline"}),
+        
+        //Top most element
         m(TopBar),
       ]
     );
@@ -112,35 +120,95 @@ var BigPics = {
     return m("#hello2", "Hello! Worlds Po!!!!");
   } 
 }
+var Text = {
+  view: (vnode)=>{
+    return m(".text", [
+      m("span.text_main", vnode.attrs.text),
+      " ",
+      m("span.text_sub", vnode.attrs.sub)
+    ]);
+  } 
+}
 var TopBar = {
+  showAll: (node)=>{
+    let nodes = node.querySelectorAll(".avatar");
+    anime({
+      targets: nodes,
+      opacity: [
+        { value: 1, duration: 300, easing: 'easeInOutSine' }
+      ],
+      scale: [
+        { value: 0, duration: 0, easing: 'easeInOutSine' },
+        { value: 1, duration: 1200, delay: 10, easing: 'easeOutElastic' }
+      ],
+      delay: function(target, index) {
+        return index * 200;
+      },
+    });
+  },
+  oncreate: (vnode)=>{
+    TopBar.showAll(vnode.dom);
+  },
   view: (vnode)=>{
     return m(".topBar", [
-
+      m(".topBar_left", [
+        m.trust(back),
+        "Batch19, Thenaj"
+      ]),
+      m(".topBar_center",[
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: "./images/jp.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: "./images/jake.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: "./images/shine.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: "./images/kuting.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: "./images/bessie.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: "./images/charles.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: "./images/cath.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: "./images/dennis.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: "./images/em.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: "./images/chrish.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: "./images/mark.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: "./images/0.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: "./images/ken.jpg"}),
+      ]),
+      m(".topBar_right", "Details"),      
     ]);
   } 
 }
 var Message = {
   view: (vnode)=>{
     let isLeft = vnode.attrs.isLeft;
+    let isProfile = false;
+    let name = vnode.attrs.name;
+    let msg = vnode.attrs.msg;
+    
     return m(".message",{
         className:  isLeft? "message_left":"message_right"
       } ,[
       m(".name", "Jan Miranda"),
-      m(Bubble, {message: "Hello there angel from my nightmare.", isLoading: false, isLeft: isLeft}),
+      m(Bubble, {message: msg, isLoading: false, isLeft: isLeft}),
       m(Bubble, {message: "•••", isLoading: true, isLeft: isLeft}),
-      m(Avatar, {isLeft: isLeft, isOnline: true})
+      m(Avatar, {isLeft: isLeft, isOnline: true, isProfile: false, name: name})
     ]);
   } 
 }
 var Avatar = {
+  oncreate: (vnode)=>{
+    if(vnode.attrs.isLeft !== null){
+      let el = vnode.dom;
+      el.classList.add("avatar_animate");
+    }
+  },
   view: (vnode)=>{
+    let isLeft = vnode.attrs.isLeft;
     return m(".avatar",{
-      className: vnode.attrs.isLeft?"avatar_left":"avatar_right"
-    },
+      className: isLeft !== null ? vnode.attrs.isLeft?"avatar_left":"avatar_right":"avatar_inline"
+    },[
+      m("img.avatar_image", {src: vnode.attrs.src || "./images/0.jpg"}),
       m(".avatar_status", {
         className: vnode.attrs.isOnline?"avatar_status_online":"avatar_status_offline"
-      })
-    );
+      }),
+      vnode.attrs.isProfile ? m(".avatar_name", vnode.attrs.name) : null,
+    ]);
   } 
 }
 var Bubble = {
@@ -181,10 +249,10 @@ var LoadingDots = {
     anime({
       targets: els,
       opacity: [
-        { value: 0.3, duration: 500, easing: 'easeInOutSine' }
+        { value: 0.3, duration: 300, easing: 'easeInOutSine' }
       ],
       scale: [
-        { value: 1.1, duration: 500, easing: 'easeInOutSine' }
+        { value: 1.1, duration: 300, easing: 'easeInOutSine' }
       ],
       direction: 'alternate',
       loop: true,
@@ -208,12 +276,6 @@ var LoadingCartWheel = {
   } 
 }
 var App = {  
-  oninit: (vnode)=>{
-  },
-
-  oncreate: (vnode)=>{
-  },
-
   view: (vnode)=>{
     return Scenes.getScene();
   }

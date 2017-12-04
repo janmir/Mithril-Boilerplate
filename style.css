@@ -1,5 +1,5 @@
 html, body {
-    font-size: 20px;
+    font-size: 27px;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -8,26 +8,65 @@ html, body {
 }
 
 #root{
-    height: 100%;
+    padding-top: 5rem;
+    /* height: 100%; */
     width: 100%;
     /* background-color: rgba(200,0,0,0.4); */
 }
 
 .topBar{
+    font-size: 20px;
+
     width: 100%;
-    height: 12%;
+    height: 5em;
     position: fixed;
     top: 0;
     left: 0;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 1em;
+    border-bottom: 1px solid lightgray;
     box-shadow: 0 0 9px 1px #0000002b;
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
 }
+    .topBar_left{
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        left: 1em;
+        color: dodgerblue;
+        font-size: 1.2em;
+        cursor: pointer;
+    }
+        .topBar_left:hover {
+            text-decoration: underline dashed;
+        }
+        .topBar_left svg {
+            transform: translate(-8px, 3px);
+            width: 0.5em;
+        }
+        .topBar_left svg > g > g{
+            stroke: #1e90ff;
+        }
 
+    .topBar_center{
+        top: 50%;
+        white-space: nowrap;
+        text-overflow: clip;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -60%);
+    }
+    .topBar_right{
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        right: 1em;
+        color: dodgerblue;
+        font-size: 1.2em;
+    }
+    
 .message{
     /* background-color: rgba(0,0,0,0.2); */
-    padding: 0.8rem;
+    padding: 1rem;
     position: relative;
 }
     .message_left{
@@ -43,9 +82,10 @@ html, body {
 
 .bubble{
     text-align: left;
-    margin: 0 2rem;
+    /* margin: 0 2rem; */
+    margin: 0.1rem 2rem;
     display: inline-block;
-    max-width: 12rem;
+    max-width: 18rem;
     padding: 0.6rem 1rem;;
     border-radius: 1rem;
     position: relative;
@@ -55,11 +95,11 @@ html, body {
         margin-bottom: 0.1rem;
     }
     .bubble_float_left{
-        animation: float 4s ease-in-out infinite;
+        animation: float 3s ease-in-out infinite;
         border-bottom-left-radius: 0; 
     }
     .bubble_float_right{
-        animation: float 4s ease-in-out infinite;
+        animation: float 3s ease-in-out infinite;
         border-bottom-right-radius: 0; 
     }
     .bubble_rotate_left{
@@ -75,43 +115,81 @@ html, body {
         border-bottom-right-radius: 0; 
     }
     .bubble_left{
-        background-color: lightskyblue;        
+        /* background-color: lightskyblue;         */
+        background-color: dodgerblue;
+        color: white;
     }
     .bubble_right{
         background-color: lightgrey;        
     }
 
 .avatar{
-    bottom: -0.5rem;
     height: 2.3rem;
     width: 2.3rem;
     background-color: darksalmon;
     border-radius: 2rem;
-    position: absolute;
-
-    animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation-fill-mode: forwards;
     box-shadow: 0 0 0 2.5px #d8d8d8;
+    opacity: 0;
+    transform: scale(0);
+    display: none;
 }
-
+    .avatar_image{
+        border-radius: 2em;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+    }
+    .avatar_animate{
+        animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation-fill-mode: forwards;
+    }
+    .avatar_name{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        letter-spacing: 0.02em;
+        color: dimgray;
+        bottom: 0;
+        position: absolute;
+        font-size: 0.5em;
+        display: inline-block;
+        width: 5.8em;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, 145%);
+        overflow: hidden;
+    }
     .avatar_left{
+        position: absolute;
+        bottom: -0.5rem;        
         left: 0.5rem;
+        display: block;        
+    }
+    .avatar_inline{
+        height: 1.8em;
+        width: 1.8em;
+        margin: 0.7em;
+        display: inline-block;
     }
     .avatar_right{
+        position: absolute;
+        bottom: -0.5rem;
         right: 0.5rem;
+        display: block;        
     }
-
     .avatar_status{
-        height: 1rem;
-        width: 1rem;
-        border-radius: 1rem;
+        height: 0.6em;
+        width: 0.6em;
+        border-radius: 1em;
         position: absolute;
         bottom: 0;
-        right: -0.1rem;
+        right: -0.1em;
         box-shadow: 0 0 0 1.5px #d8d8d8;
     }
     .avatar_status_online{
-        background-color: olivedrab;
+        background-color: rgb(66, 183, 42);
     }
     .avatar_status_offline{
         background-color: gray;
@@ -131,13 +209,27 @@ html, body {
         opacity: 1;
     }
 
+.text{
+    font-size: 0.8rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+    .text_main{
+        color: rgb(35, 53, 53);
+        font-weight: bold;
+    }
+    .text_sub{
+        font-size: 0.7rem;
+        color: rgb(60, 95, 95);
+    }
+
 /* Animations */
 @keyframes float {
     0% {
         transform: translatey(0px) scale(1);
     }
     50% {
-        transform: translatey(-5px) scale(1.02);
+        transform: translatey(-6px) scale(1.03);
     }
     100% {
         transform: translatey(0px) scale(1);
@@ -176,3 +268,5 @@ html, body {
         transform: rotate(0deg) scale(1);
     }
 }
+
+/* Ken burns for pictures */
