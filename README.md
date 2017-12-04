@@ -1,1 +1,1 @@
-Mithril-Boilerplate
+Mitril + Webpack + Babel
