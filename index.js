@@ -533,9 +533,7 @@ var Scenes = {
       m.redraw();
 
       //scroll
-      setTimeout(()=>{
-        window.scrollTo(0,document.querySelector("#root").scrollHeight);
-      },200);
+      window.scrollTo(0,document.querySelector("#root").scrollHeight);
       
       setTimeout(()=>{
         //increment
@@ -610,7 +608,7 @@ var Text = {
 }
 var TopBar = {
   shown: false,
-  popTimeout: 0,
+  popTimeout: 10000,
   showAll: (node)=>{
     let nodes = node.querySelectorAll(".avatar");
 
@@ -641,9 +639,9 @@ var TopBar = {
   },
   
   oncreate: (vnode)=>{
-    TopBar.showAll(vnode.dom);
-    //setTimeout(()=>{
-    //}, TopBar.popTimeout);
+    setTimeout(()=>{
+      TopBar.showAll(vnode.dom);
+    }, TopBar.popTimeout);
   },
   view: (vnode)=>{
     return m(".topBar", [
@@ -748,6 +746,12 @@ var Bubble = {
     let animate = vnode.attrs.animate || false;
     let delay = vnode.attrs.delay / 2;
     
+    if(image !== null){
+      image.addEventListener("load", function() {
+        window.scrollTo(0,document.querySelector("#root").scrollHeight);
+      } );
+    }
+    
     if(animate){
       //Rotate it
       let rotate = vnode.attrs.isLeft ?"bubble_rotate_left":"bubble_rotate_right";
@@ -790,7 +794,10 @@ var Bubble = {
                   targets: image,
                   opacity: [
                     { value: 0.7, duration: 200, easing: 'easeInOutSine' }
-                  ]
+                  ],
+                  complete: ()=>{
+                    window.scrollTo(0,document.querySelector("#root").scrollHeight);
+                  }
                 });
 
                 //resize
@@ -802,7 +809,10 @@ var Bubble = {
                   targets: image,
                   opacity: [
                     { value: 1, duration: 300, easing: 'easeInOutSine' }
-                  ]
+                  ],
+                  complete: ()=>{
+                    window.scrollTo(0,document.querySelector("#root").scrollHeight);
+                  }
                 });
 
                 //resize
@@ -936,11 +946,14 @@ var App = {
     }
 
     //Add top bar
-    scenes.push(m(TopBar));
+    //scenes.push(m(TopBar));
     
-    return  m(".container",
-      scenes
-    );
+    return  m("div",[
+      m(".container",
+        scenes
+      ),
+      m(TopBar),
+    ]);
   }
 }
 

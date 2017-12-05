@@ -75,7 +75,7 @@ html, body {
 .message{
     /* background-color: rgba(0,0,0,0.2); */
     margin-top: 1rem;
-    padding: 1.3rem;
+    padding: 2rem;
     position: relative;
 }
     .message_left{
@@ -216,8 +216,8 @@ html, body {
     }
     .avatar_left{
         position: absolute;
-        bottom: -0.5rem;        
-        left: 0.5rem;
+        bottom: 0rem;        
+        left: 1rem;
         display: block;        
     }
     .avatar_inline{
@@ -228,8 +228,8 @@ html, body {
     }
     .avatar_right{
         position: absolute;
-        bottom: -0.5rem;
-        right: 0.5rem;
+        bottom: 0rem;
+        right: 1rem;
         display: block;        
     }
     .avatar_status{
