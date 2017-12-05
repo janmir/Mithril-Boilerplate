@@ -45,7 +45,7 @@ import back from './images/back.svg'
 //以上
 //to offline all in order nice! random permutation
 //name is now offline
-/*********************Data************************/
+/*********************Data Schema************************/
 /*
 [
   {//scene
@@ -88,25 +88,495 @@ import back from './images/back.svg'
     ],
   });
 */
+/*********************Data************************/
+const replyDelay = 2000;
+const textDelay = 300;
+const data = [
+  {
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Janeth Elano", sub: "joined the group."},
+      }}
+    ]
+  },  
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "LOL",
+        },
+        pre_delay: 1000,
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//ken
+    name: "Kennron Damsid",
+    src: "./images/ken.jpg",
+    left: false,
+    online: false,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "?",
+        },
+        pre_delay: 2000, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//online-kuting
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Christine", sub: "is now online."},
+      }}
+    ]
+  },  
+  {//online-jp
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Jp", sub: "is now online."},
+      }}
+    ]
+  },  
+  {//online-jake
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Jake", sub: "is now online."},
+      }}
+    ]
+  },  
+  {//online-shine
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Sheena Mae", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-bessie
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Bessie Mae", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-cath
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Pikyasu", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-dennis
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Dennis", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-christopher
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Christopher", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-charles
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Charles", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//online-em
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Emelyn", sub: "is now online."},
+        }}
+    ]
+  },  
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Hoy, mga ate og kuya!",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Paghimu daw mo og message.",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "5-year anniversary, char!",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//mark
+    name: "Mark Cordova",
+    src: "./images/mark.jpg",
+    left: false,
+    online: false,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "HAHAHAHAHA XD! Congrats mga Migs!",
+        },
+        pre_delay: 2000, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "You, guys ready?",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//chrish
+    name: "Christopher Maister",
+    src: "./images/chrish.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Yeah, whatever.",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//dennis
+    name: "Dennis Alvarez",
+    src: "./images/dennis.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "::trap::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//kuting
+    name: "Christine Ronquillo",
+    src: "./images/kuting.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "::like::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//me
+    name: "Jan Paul Miranda",
+    src: "./images/jp.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "::noooo::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Nice!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Let's start!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: ".",
+        },
+        pre_delay: 100, 
+        post_delay: 200,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: ".",
+        },
+        pre_delay: 100, 
+        post_delay: 200,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: ".",
+        },
+        pre_delay: 100, 
+        post_delay: 200,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Hello minna-san!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "::hi::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Okay first, some throwbacks.",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "{{1,2}}",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+];
 /*********************Scenes************************/
 var Scenes = {
-  timeline: 0,
+  scenes: [],
+
+  timeline_main: 0,
+  timeline_sub: 0,
   
-  getScene: ()=>{
-    return m("#messages",
-      [
-        m(Message, {msg: "This is a sample sentence.", isLeft: true, name: "Jan Miranda"}),
-        m(Message, {msg: "This one is supposed to be longer but i can't think of any words to write anymore. Sad, really sad.", isLeft: false, name: "Jan Miranda"}),
-        m(Text, {text: "Jan", sub: "is now offline"}),
-        m(Text, {text: "Kuting", sub: "is now offline"}),
-        m(Text, {text: "Kennron", sub: "is now offline"}),
-        
-        //Top most element
-        m(TopBar),
-      ]
-    );
+  play: ()=>{
+    let main = Scenes.timeline_main;
+    let sub = Scenes.timeline_sub;    
+
+    let el = data[main];
+
+    let name = el.name || null;
+    let left = el.left || false;
+    let delay = el.delay || 0; //delay per scene
+    let avatarSrc = el.src || null;
+    let online = el.online || false;
+    let message = el.message[sub] || null;
+
+    //check if end
+    let isStart = 0 == sub;
+    let isEnd = el.message.length == sub;
+    
+    console.log("StartEnd:", isStart, isEnd);
+
+    if(!isEnd && message !== null){
+      let subtitle = message.subtitle || null;
+      let content = message.content;
+      let pre_delay = message.pre_delay || 0; //bubble loading
+      let post_delay = message.post_delay + pre_delay || 0; //per message
+      
+      switch(content.type){
+        case "text":{
+          Scenes.scenes.push(
+            m(Text, {text: content.data.text, sub: content.data.sub}),
+          );    
+        }break;
+        case "picture":{
+
+        }break;     
+        case "message":{
+          //start push it
+          if(isStart){
+            let msg = content.data || null;
+            Scenes.scenes.push(
+              Message.getMessage(
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online,  delay: pre_delay}
+              )
+            );
+          }
+          //If not just update it
+          else{
+            let oldMessage = Scenes.scenes.pop();
+            let msg = content.data || null;
+            
+            //push
+            Scenes.scenes.push(
+              Message.updateMessage(
+                oldMessage, 
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online, delay: pre_delay}
+              )
+            );
+          }
+        }break;
+      }
+
+      //call play again
+      m.redraw();
+
+      //scroll
+      setTimeout(()=>{
+        window.scrollTo(0,document.querySelector("#root").scrollHeight);
+      },200);
+      
+      setTimeout(()=>{
+        //increment
+        Scenes.timeline_sub++;
+        Scenes.play();
+      }, post_delay);
+
+    }else{
+      console.log("End of current sub data.");
+
+      //reset
+      Scenes.timeline_main++;      
+      Scenes.timeline_sub = 0;
+
+      //check if end
+      let isEnd = data.length == Scenes.timeline_main;
+
+      if(!isEnd){
+        setTimeout(()=>{
+          Scenes.play();
+        }, delay);
+      }else{
+        console.log("End of everything.");
+      }
+    }
+  },
+
+  getScene: ()=>{    
+    return Scenes.scenes;
   }
 }
+
+/*
+m(Bubble, {message: "•••", isLeft: isLeft}),
+oldChild = Array.prototype.slice.call(oldChild);
+m(Message, {msg: "This is a sample sentence.", isLeft: true, name: "Jan Miranda"}),
+m(Message, {msg: "This one is supposed to be longer but i can't think of any words to write anymore. Sad, really sad.", isLeft: false, name: "Jan Miranda"}),
+m(Text, {text: "Jan", sub: "is now offline"}),
+m(Text, {text: "Kuting", sub: "is now offline"}),
+m(Text, {text: "Kennron", sub: "is now offline"}),
+*/
 /*********************Components************************/
 var TouchFeedBack = {
   view: (vnode)=>{
@@ -121,6 +591,15 @@ var BigPics = {
   } 
 }
 var Text = {
+  oncreate: (vnode)=>{
+    let els = vnode.dom;
+    anime({
+      targets: els,
+      opacity: [
+        { value: 1, duration: 100, easing: 'easeInOutSine' }
+      ]
+    });
+  },
   view: (vnode)=>{
     return m(".text", [
       m("span.text_main", vnode.attrs.text),
@@ -130,24 +609,41 @@ var Text = {
   } 
 }
 var TopBar = {
+  shown: false,
+  popTimeout: 0,
   showAll: (node)=>{
     let nodes = node.querySelectorAll(".avatar");
-    anime({
-      targets: nodes,
-      opacity: [
-        { value: 1, duration: 300, easing: 'easeInOutSine' }
-      ],
-      scale: [
-        { value: 0, duration: 0, easing: 'easeInOutSine' },
-        { value: 1, duration: 1200, delay: 10, easing: 'easeOutElastic' }
-      ],
-      delay: function(target, index) {
-        return index * 200;
-      },
-    });
+
+    if(!TopBar.shown){
+      anime({
+        targets: nodes,
+        opacity: [
+          { value: 1, duration: 300, easing: 'easeInOutSine' }
+        ],
+        scale: [
+          { value: 0, duration: 0, easing: 'easeInOutSine' },
+          { value: 1, duration: 1200, delay: 10, easing: 'easeOutElastic' }
+        ],
+        delay: function(target, index) {
+          return index * 100;
+        },
+        complete: ()=>{
+          TopBar.shown = true;
+        }
+      });
+
+    }else{
+      nodes.forEach(el=>{
+        el.style.opacity = 1;
+        el.style.transform = "scale(1)";
+      });
+    }
   },
+  
   oncreate: (vnode)=>{
     TopBar.showAll(vnode.dom);
+    //setTimeout(()=>{
+    //}, TopBar.popTimeout);
   },
   view: (vnode)=>{
     return m(".topBar", [
@@ -175,20 +671,51 @@ var TopBar = {
   } 
 }
 var Message = {
+  updateMessage: (message, data)=>{
+    let oldChild = message.dom.querySelectorAll(".bubble_parent > .bubble > :first-child");    
+    let newChild = [];
+
+    //push majors
+    newChild.push(m(".name", data.name));
+    newChild.push(m(Avatar, {isLeft: data.isLeft, isOnline: true, isProfile: false, 
+      name: data.name, src: data.src, isOnline: data.online}));
+
+    //push old bubbles
+    oldChild.forEach(el=>{
+      let text = el.innerHTML || null;
+      let src = el.src || null;
+
+      console.log("----------", text, "-----", src)
+
+      newChild.push(m(Bubble, {src: src, message: text, isLeft: data.isLeft}));
+    });
+    
+    //push new bubble
+    newChild.push(m(Bubble, {message: data.msg, isLeft: data.isLeft, animate: true}));
+    
+    return m(".message",{
+      className:  data.isLeft? "message_left":"message_right"
+    }, newChild);
+  },
+  getMessage: (data)=>{
+    return m(Message, data);
+  },
   view: (vnode)=>{
     let isLeft = vnode.attrs.isLeft;
     let isProfile = false;
     let name = vnode.attrs.name;
     let msg = vnode.attrs.msg;
+    let src = vnode.attrs.src;
+    let online = vnode.attrs.online;
+    let delay = vnode.attrs.delay || 100;
     
     return m(".message",{
         className:  isLeft? "message_left":"message_right"
       } ,[
-      m(".name", "Jan Miranda"),
-      m(Bubble, {message: msg, isLoading: false, isLeft: isLeft}),
-      m(Bubble, {message: "•••", isLoading: true, isLeft: isLeft}),
-      m(Avatar, {isLeft: isLeft, isOnline: true, isProfile: false, name: name})
-    ]);
+        m(".name", name),
+        m(Avatar, {isLeft: isLeft, isOnline: online, isProfile: false, name: name, src: src}),
+        msg ? m(Bubble, {message: msg, isLeft: isLeft, animate: true, delay: delay}) : null,
+      ]);
   } 
 }
 var Avatar = {
@@ -213,34 +740,146 @@ var Avatar = {
 }
 var Bubble = {
   oncreate: (vnode)=>{
-    let el = vnode.dom.querySelector(".bubble");
-    let rotate = vnode.attrs.isLeft ?"bubble_rotate_left":"bubble_rotate_right";
-    el.classList.add(rotate);
+    let bubble = vnode.dom.querySelector(".bubble");
+    let dots = bubble.querySelector(".loading_dots");
+    let album = bubble.querySelector(".bubble_album");
+    let image = bubble.querySelector(".bubble_image");
+    let message = bubble.querySelector(".bubble_message");
+    let animate = vnode.attrs.animate || false;
+    let delay = vnode.attrs.delay / 2;
+    
+    if(animate){
+      //Rotate it
+      let rotate = vnode.attrs.isLeft ?"bubble_rotate_left":"bubble_rotate_right";
+      bubble.classList.add(rotate);
 
-    if(vnode.attrs.isLoading){
       setTimeout(()=>{
+        //Float it
         let float = vnode.attrs.isLeft ?"bubble_float_left":"bubble_float_right";
-        el.classList.replace(rotate, float);
-      }, 1000);
+        bubble.classList.replace(rotate, float);
+
+        //Make it still
+        setTimeout(()=>{
+          //Remove float effect
+          bubble.classList.remove(float);
+
+          //Hide dots
+          anime({
+            targets: dots,
+            opacity: [
+              { value: 0, duration: 300, easing: 'easeInOutSine' }
+            ],
+            complete: (anim)=>{
+              dots.style.display = "none";
+
+              //show message
+              if(message !== null){
+                message.style.display = "inline";                
+                anime({
+                  targets: message,
+                  opacity: [
+                    { value: 1, duration: 300, easing: 'easeInOutSine' }
+                  ]
+                });
+
+                //resize
+              }else
+              if(album !== null){
+                image.style.display = "inline";
+                anime({
+                  targets: image,
+                  opacity: [
+                    { value: 0.7, duration: 200, easing: 'easeInOutSine' }
+                  ]
+                });
+
+                //resize
+                bubble.classList.add("bubble_album_size");
+              }else
+              if(image !== null){
+                image.style.display = "inline";
+                anime({
+                  targets: image,
+                  opacity: [
+                    { value: 1, duration: 300, easing: 'easeInOutSine' }
+                  ]
+                });
+
+                //resize
+                bubble.classList.add("bubble_sticker");
+              }
+            }
+          });
+        }, delay);
+      }, delay);
+    }else{
+      dots.style.display = "none";
+
+      if(message !== null){
+        message.style.display = "inline";
+        message.style.opacity = 1;
+      }else   
+      if(album !== null){
+      }else  
+      if(image !== null){
+        image.style.display = "inline";
+        image.style.opacity = 1;
+
+        //resize
+        bubble.classList.add("bubble_sticker");                        
+      }        
     }
   },
   view: (vnode)=>{
     let classes = [];
+    let data = vnode.attrs.message;
+    let src = vnode.attrs.src;
+    let count = 0;
+
+    let isSticker = false;
+    let isAlbum = false;
+    let isMessage = false;
+    
+    //check if emoticon
+    if(data !== null){
+      let sticker = /::(\w+)::/.exec(data);
+      let album = /{{([\d,]+)}}/.exec(data);
+      
+      if(sticker != null){
+        console.log("Sticker Match: ", sticker)
+        let file = sticker[1];
+  
+        isSticker = true;
+        data = "./images/"+file+".jpg";
+      }else
+      if(album != null){
+        console.log("Album Match: ", album)
+        let files = album[1].split(",");
+        count = files.length;
+
+        isAlbum = true;
+        data = "./images/"+files[0]+".jpg";
+      }
+    }else if(src !== null){
+      isSticker = true;
+      data = src;
+    }
+
+    isMessage = !isSticker && !isAlbum;
     classes.push( vnode.attrs.isLeft ? "bubble_left":"bubble_right");
     
-    if(!vnode.attrs.isLoading){
-      return m(".bubble_parent", 
-        m(".bubble",{
-          className: classes
-        }, vnode.attrs.message)
-      );
-    }else{
-      return m(".bubble_parent", 
-        m(".bubble", {
-          className: classes
-        },m(LoadingDots))
-      );
-    }
+    count = "+" + (count-1);
+
+    return m(".bubble_parent", 
+      m(".bubble", {
+        className: classes
+      },[
+        isSticker ? m("img.bubble_image", {src: data}):null,
+        isAlbum ? m(".bubble_album",[m("img.bubble_image", {src: data}),m(".bubble_counter", count)]):null,
+        isMessage ? m("span.bubble_message",data):null,
+        m(LoadingDots)
+      ])
+    );
   } 
 }
 var LoadingDots = {
@@ -275,9 +914,33 @@ var LoadingCartWheel = {
     return m("#hello3", "Hello! Worlds Po!!!!");
   } 
 }
-var App = {  
+var App = {
+  start: false,
+  oncreate: ()=>{
+    console.log("Oncreate");
+    setTimeout(()=>{
+      App.start = true;
+      Scenes.play();  
+    }, 2000);
+  },
   view: (vnode)=>{
-    return Scenes.getScene();
+    console.log("Redraw:", vnode);
+    
+    let scenes = [];
+    
+    if(App.start){  
+      scenes = Scenes.getScene().slice();
+      //console.log("Current: ", scenes);      
+    }else{
+      //nothing
+    }
+
+    //Add top bar
+    scenes.push(m(TopBar));
+    
+    return  m(".container",
+      scenes
+    );
   }
 }
 

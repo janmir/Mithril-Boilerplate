@@ -1,4 +1,5 @@
 html, body {
+    /* overflow: hidden; */
     font-size: 27px;
     margin: 0;
     padding: 0;
@@ -7,18 +8,26 @@ html, body {
     font-family: 'Fira Sans', sans-serif;
 }
 
+@media screen and (min-width: 0px) and (max-width: 1210px) {
+    .topBar_center { display: none; }
+}
+@media screen and (min-width: 1211px) and (max-width: 1920px) {
+    .topBar_center { display: inline-block; }
+}
+
 #root{
     padding-top: 5rem;
+    padding-bottom: 3rem;
     /* height: 100%; */
     width: 100%;
     /* background-color: rgba(200,0,0,0.4); */
 }
 
 .topBar{
-    font-size: 20px;
+    font-size: 18px;
 
     width: 100%;
-    height: 5em;
+    height: 4em;
     position: fixed;
     top: 0;
     left: 0;
@@ -46,7 +55,6 @@ html, body {
         .topBar_left svg > g > g{
             stroke: #1e90ff;
         }
-
     .topBar_center{
         top: 50%;
         white-space: nowrap;
@@ -66,7 +74,8 @@ html, body {
     
 .message{
     /* background-color: rgba(0,0,0,0.2); */
-    padding: 1rem;
+    margin-top: 1rem;
+    padding: 1.3rem;
     position: relative;
 }
     .message_left{
@@ -89,17 +98,53 @@ html, body {
     padding: 0.6rem 1rem;;
     border-radius: 1rem;
     position: relative;
-    /* transition: all 0.5s linear; */
+    overflow: hidden;
+
+    transition: all 0.2s linear;
 }
     .bubble_parent{
         margin-bottom: 0.1rem;
     }
+    .bubble_message{
+        display: none;
+        opacity: 0;
+    }
+    .bubble_image{
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        top: 0;
+        left: 0;  
+        opacity: 0;      
+    }
+    .bubble_album {
+        background-color: black;
+        position: absolute;
+        height: 100%;
+        display: inline-block;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+        .bubble_album > img{
+            opacity: 0.8;
+        }
+        .bubble_counter{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 7rem;
+        }
     .bubble_float_left{
-        animation: float 3s ease-in-out infinite;
+        animation: float 1.5s ease-in-out infinite;
         border-bottom-left-radius: 0; 
     }
     .bubble_float_right{
-        animation: float 3s ease-in-out infinite;
+        animation: float 1.5s ease-in-out infinite;
         border-bottom-right-radius: 0; 
     }
     .bubble_rotate_left{
@@ -122,10 +167,18 @@ html, body {
     .bubble_right{
         background-color: lightgrey;        
     }
+    .bubble_sticker{
+        height: 10rem;
+        width: 10rem;
+    }
+    .bubble_album_size{
+        height: 20rem;
+        width: 20rem;
+    }
 
 .avatar{
-    height: 2.3rem;
-    width: 2.3rem;
+    height: 3rem;
+    width: 3rem;
     background-color: darksalmon;
     border-radius: 2rem;
     box-shadow: 0 0 0 2.5px #d8d8d8;
@@ -143,7 +196,7 @@ html, body {
         left: 0;
     }
     .avatar_animate{
-        animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         animation-fill-mode: forwards;
     }
     .avatar_name{
@@ -180,8 +233,8 @@ html, body {
         display: block;        
     }
     .avatar_status{
-        height: 0.6em;
-        width: 0.6em;
+        height: 0.8em;
+        width: 0.8em;
         border-radius: 1em;
         position: absolute;
         bottom: 0;
@@ -213,6 +266,7 @@ html, body {
     font-size: 0.8rem;
     text-align: center;
     margin: 0.5rem;
+    opacity: 0;
 }
     .text_main{
         color: rgb(35, 53, 53);
@@ -229,7 +283,7 @@ html, body {
         transform: translatey(0px) scale(1);
     }
     50% {
-        transform: translatey(-6px) scale(1.03);
+        transform: translatey(-10px) scale(1.1);
     }
     100% {
         transform: translatey(0px) scale(1);
@@ -250,11 +304,11 @@ html, body {
 @keyframes rotate_left {
     0% {
         opacity: 0;
-        transform: rotate(90deg) scale(0.5);
+        transform: rotate(90deg) scale(0.5) translatey(2px);
     }
     100% {
         opacity: 1;
-        transform: rotate(0deg) scale(1);
+        transform: rotate(0deg) scale(1) translatey(0px);
     }
 }
 
