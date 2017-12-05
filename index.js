@@ -3,6 +3,7 @@ import anime from './anime.js'
 
 /*********************SVGs************************/
 import back from './images/back.svg'
+import { setTimeout } from "timers";
 
 /*********************Flow************************/
 //Lol
@@ -45,39 +46,9 @@ import back from './images/back.svg'
 //以上
 //to offline all in order nice! random permutation
 //name is now offline
-/*********************Data Schema************************/
-/*
-[
-  {//scene
-    name: ["jan miranda"],
-    left: false,
-    message: [ //message 1
-          {
-            content:{
-              type: "message", //message(chat message), text(center message), image, function
-              data: "message here",
-              data: ()=>{
-                //show element
-              },
-              data: [
-                {
-                  url:"",
-                  zoom: false,
-                  zoom_in: false,
-                }
-              ]
-            },
-            delay: 100, //ms,
-            subtitle: ""
-          },
-          ...
-    ]
-  },
-  {[...]} //scene/message 2
-]
-*/
 /*********************Snippets************************/
 /*
+  oldChild = Array.prototype.slice.call(oldChild);
   anime({
     targets: el,
     opacity: [
@@ -90,10 +61,10 @@ import back from './images/back.svg'
 */
 /*********************Data************************/
 const replyDelay = 2000;
-const textDelay = 300;
+const textDelay = 200;
 const data = [
   {
-    delay: textDelay,
+    delay: 1000,
     message: [ 
       {content:{
           type: "text",
@@ -131,7 +102,7 @@ const data = [
           type: "message",
           data: "?",
         },
-        pre_delay: 2000, 
+        pre_delay: 500, 
         post_delay: replyDelay,
         subtitle: null
       }
@@ -219,7 +190,7 @@ const data = [
     ]
   },  
   {//online-em
-    delay: textDelay,
+    delay: 1000,
     message: [ 
       {content:{
           type: "text",
@@ -366,9 +337,9 @@ const data = [
           data: "::noooo::",
         },
         pre_delay: 200, 
-        post_delay: replyDelay,
+        post_delay: 500,
         subtitle: null
-      }
+      },
     ]
   },
   {//thenaj
@@ -401,7 +372,7 @@ const data = [
           type: "message",
           data: ".",
         },
-        pre_delay: 100, 
+        pre_delay: 0, 
         post_delay: 200,
         subtitle: null
       },
@@ -410,7 +381,7 @@ const data = [
           type: "message",
           data: ".",
         },
-        pre_delay: 100, 
+        pre_delay: 0, 
         post_delay: 200,
         subtitle: null
       },
@@ -419,17 +390,8 @@ const data = [
           type: "message",
           data: ".",
         },
-        pre_delay: 100, 
-        post_delay: 200,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Hello minna-san!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
+        pre_delay: 0, 
+        post_delay: 2000,
         subtitle: null
       },
       {
@@ -437,14 +399,113 @@ const data = [
           type: "message",
           data: "::hi::",
         },
-        pre_delay: 200, 
+        pre_delay: 0, 
+        post_delay: 500,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Hello minna-san!",
+        },
+        pre_delay: 1000, 
+        post_delay: 3000,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "First, some throwbacks.",
+        },
+        pre_delay: 4000, 
         post_delay: replyDelay,
         subtitle: null
       },
       {
         content:{
           type: "message",
-          data: "Okay first, some throwbacks.",
+          data: "{{1,2,3,4,5}}",
+        },
+        pre_delay: 200, 
+        post_delay: 1000 * 30,
+        subtitle: null
+      }
+    ]
+  },
+  {//Charles
+    name: "Charles Go",
+    src: "./images/charles.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "HAHA",
+        },
+        pre_delay: 4000, 
+        post_delay: replyDelay,
+        subtitle: null
+      }
+    ]
+  },
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "I know right!",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Next!",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "I believe you guys want to say something?",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Let's start with Kuting. XD",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//kuting
+    name: "Christine Ronquillo",
+    src: "./images/kuting.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Hello, I'm Kuting.",
         },
         pre_delay: 200, 
         post_delay: replyDelay,
@@ -453,7 +514,61 @@ const data = [
       {
         content:{
           type: "message",
-          data: "{{1,2}}",
+          data: "::kuting::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Ummm",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Just wanna say...",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Sa tanang naa utang naku",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Bayad namu!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Also,",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Thanks, AWS.",
         },
         pre_delay: 200, 
         post_delay: replyDelay,
@@ -461,6 +576,348 @@ const data = [
       }
     ]
   },
+  {//thenaj
+    name: "Janeth Elano",
+    src: "./images/thenaj.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Kyasu! I choose you!",
+        },
+        pre_delay: 100, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//Cath
+    name: "Catherine Gallardo Idul",
+    src: "./images/cath.jpg",
+    left: false,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "Err....mam? K",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "::cath::",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Cath here.",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Cath there.",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "AWS",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Thanks & Goodbye!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+    ]
+  },
+  {//me
+    name: "Jan Miranda",
+    src: "./images/jp.jpg",
+    left: true,
+    online: true,    
+    delay: 0,
+    message: [ 
+      {
+        content:{
+          type: "message",
+          data: "We done?",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "Good!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      }, 
+      {
+        content:{
+          type: "message",
+          data: "Phew! amazing 5 years, congrats!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //otsukaresama deshita minna! <sticker>
+      {
+        content:{
+          type: "message",
+          data: "Otsukaresamadeshita minna!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //Before i end this, I would like to say thanks to 
+      {
+        content:{
+          type: "message",
+          data: "Before i end this, I would like to say thanks to:",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //--kyasu for our christmas dinner this 25th!
+      {
+        content:{
+          type: "message",
+          data: "1. Kyasu: for our christmas dinner this 25th!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //--bossing for the visit *soon - chicken joy please.
+      {
+        content:{
+          type: "message",
+          data: "2. Bossing: for the visit *soon - chicken joy please.",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //--bessie & shine for the disgusting pics!
+      {
+        content:{
+          type: "message",
+          data: "3. Kuting, em, bessie & shine: for the disgusting pics!",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //--marvel for the new avengers movie
+      {
+        content:{
+          type: "message",
+          data: "4. Marvel: for the new avengers movie",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //--DC for trying :D 
+      {
+        content:{
+          type: "message",
+          data: "& 5. DC for trying :D ",
+        },
+        pre_delay: 200, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      /*{
+        content:{
+          type: "message",
+          data: "::hi::",
+        },
+        pre_delay: 0, 
+        post_delay: 500,
+        subtitle: null
+      },*/
+      //Now, i'll leave you with a slideshow of our more recent pics.
+      {
+        content:{
+          type: "message",
+          data: "Now, I'll leave you with more pictures.",
+        },
+        pre_delay: 4000, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      //enjoi!
+      {
+        content:{
+          type: "message",
+          data: "Enjoy!",
+        },
+        pre_delay: 4000, 
+        post_delay: replyDelay,
+        subtitle: null
+      },
+      {
+        content:{
+          type: "message",
+          data: "{{6,7,8,9,10,11,12}}",
+        },
+        pre_delay: 200, 
+        post_delay: 1000 * 40,
+        subtitle: null
+      }
+    ]
+  },
+  {//offline-jessie
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Jessie", sub: "is already offline."},
+      }}
+    ]
+  },  
+  {//offline-mark
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Mark", sub: "is already offline."},
+      }}
+    ]
+  },  
+  {//offline-ken
+    delay: 5000,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Kennron", sub: "is already offline."},
+      }}
+    ]
+  },  
+  {//offline-cath
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Catherine", sub: "has gone offline."},
+        }}
+    ]
+  }, 
+  {//offline-charles
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Charles", sub: "has gone offline."},
+        }}
+    ]
+  }, 
+  {//offline-kuting
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Christine", sub: "has gone offline."},
+      }}
+    ]
+  },  
+  {//offline-jp
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "JP", sub: "has gone offline."},
+      }}
+    ]
+  },  
+  {//offline-jake
+    delay: textDelay,
+    message: [ 
+    {content:{
+        type: "text",
+        data: {text: "Jake", sub: "has gone offline."},
+      }}
+    ]
+  },  
+  {//offline-shine
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Sheena Mae", sub: "has gone offline."},
+        }}
+    ]
+  },  
+  {//offline-bessie
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Elaine", sub: "has gone offline."},
+        }}
+    ]
+  },   
+  {//offline-dennis
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Dennis", sub: "has gone offline."},
+        }}
+    ]
+  },  
+  {//offline-christopher
+    delay: textDelay,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Christopher", sub: "has gone offline."},
+        }}
+    ]
+  },   
+  {//offline-em
+    delay: 1000,
+    message: [ 
+      {content:{
+          type: "text",
+          data: {text: "Emelyn", sub: "has gone offline."},
+        }}
+    ]
+  }, 
 ];
 /*********************Scenes************************/
 var Scenes = {
@@ -497,7 +954,7 @@ var Scenes = {
       switch(content.type){
         case "text":{
           Scenes.scenes.push(
-            m(Text, {text: content.data.text, sub: content.data.sub}),
+            m(Text, {text: content.data.text, sub: content.data.sub, delay: delay}),
           );    
         }break;
         case "picture":{
@@ -531,9 +988,6 @@ var Scenes = {
 
       //call play again
       m.redraw();
-
-      //scroll
-      window.scrollTo(0,document.querySelector("#root").scrollHeight);
       
       setTimeout(()=>{
         //increment
@@ -557,6 +1011,8 @@ var Scenes = {
         }, delay);
       }else{
         console.log("End of everything.");
+
+        TopBar.hideAll();
       }
     }
   },
@@ -565,36 +1021,15 @@ var Scenes = {
     return Scenes.scenes;
   }
 }
-
-/*
-m(Bubble, {message: "•••", isLeft: isLeft}),
-oldChild = Array.prototype.slice.call(oldChild);
-m(Message, {msg: "This is a sample sentence.", isLeft: true, name: "Jan Miranda"}),
-m(Message, {msg: "This one is supposed to be longer but i can't think of any words to write anymore. Sad, really sad.", isLeft: false, name: "Jan Miranda"}),
-m(Text, {text: "Jan", sub: "is now offline"}),
-m(Text, {text: "Kuting", sub: "is now offline"}),
-m(Text, {text: "Kennron", sub: "is now offline"}),
-*/
 /*********************Components************************/
-var TouchFeedBack = {
-  view: (vnode)=>{
-    console.log("--view--");
-    return m("#hello2", "Hello! Worlds Po!!!!");
-  } 
-}
-var BigPics = {
-  view: (vnode)=>{
-    console.log("--view--");
-    return m("#hello2", "Hello! Worlds Po!!!!");
-  } 
-}
 var Text = {
   oncreate: (vnode)=>{
     let els = vnode.dom;
+    let duration = vnode.attrs.delay / 2;
     anime({
       targets: els,
       opacity: [
-        { value: 1, duration: 100, easing: 'easeInOutSine' }
+        { value: 1, duration: duration, easing: 'easeInOutSine' }
       ]
     });
   },
@@ -637,7 +1072,28 @@ var TopBar = {
       });
     }
   },
-  
+  hideAll: (node)=>{
+    let nodes = document.querySelectorAll(".topBar_center .avatar");
+
+    if(TopBar.shown){
+      anime({
+        targets: nodes,
+        opacity: [
+          { value: 0, duration: 300, easing: 'easeInOutSine' }
+        ],
+        scale: [
+          { value: 0, duration: 1200, easing: 'easeOutElastic' }
+        ],
+        delay: function(target, index) {
+          return index * 300;
+        },
+        complete: ()=>{
+          TopBar.shown = false;
+        }
+      });
+
+    }
+  }, 
   oncreate: (vnode)=>{
     setTimeout(()=>{
       TopBar.showAll(vnode.dom);
@@ -689,13 +1145,16 @@ var Message = {
     });
     
     //push new bubble
-    newChild.push(m(Bubble, {message: data.msg, isLeft: data.isLeft, animate: true}));
+    newChild.push(m(Bubble, {message: data.msg, isLeft: data.isLeft, animate: true, delay: data.delay}));
     
     return m(".message",{
       className:  data.isLeft? "message_left":"message_right"
     }, newChild);
   },
   getMessage: (data)=>{
+    //play pop
+    App.pop();
+
     return m(Message, data);
   },
   view: (vnode)=>{
@@ -748,8 +1207,10 @@ var Bubble = {
     
     if(image !== null){
       image.addEventListener("load", function() {
-        window.scrollTo(0,document.querySelector("#root").scrollHeight);
-      } );
+        image.style.display = "inline";
+        bubble.style.backgroundColor = "white";      
+        //window.scrollTo(0,document.querySelector("#root").scrollHeight);
+      });
     }
     
     if(animate){
@@ -771,7 +1232,7 @@ var Bubble = {
           anime({
             targets: dots,
             opacity: [
-              { value: 0, duration: 300, easing: 'easeInOutSine' }
+              { value: 0, duration: 200, easing: 'easeInOutSine' }
             ],
             complete: (anim)=>{
               dots.style.display = "none";
@@ -779,49 +1240,54 @@ var Bubble = {
               //show message
               if(message !== null){
                 message.style.display = "inline";                
+
                 anime({
                   targets: message,
                   opacity: [
-                    { value: 1, duration: 300, easing: 'easeInOutSine' }
+                    { value: 1, duration: 400, easing: 'easeInOutSine' }
                   ]
                 });
 
-                //resize
-              }else
-              if(album !== null){
-                image.style.display = "inline";
+              }else if(album !== null){
                 anime({
                   targets: image,
                   opacity: [
-                    { value: 0.7, duration: 200, easing: 'easeInOutSine' }
+                    { value: 0.7, duration: 400, easing: 'easeInOutSine' }
                   ],
                   complete: ()=>{
-                    window.scrollTo(0,document.querySelector("#root").scrollHeight);
+                    App.scrollTop();
                   }
                 });
 
                 //resize
                 bubble.classList.add("bubble_album_size");
-              }else
-              if(image !== null){
-                image.style.display = "inline";
+
+                //show dimmer
+                setTimeout(()=>{
+                  let files = vnode.attrs.files;
+
+                  App.showDimmer(files);                  
+                },1000);
+
+              }else if(image !== null){
                 anime({
                   targets: image,
                   opacity: [
-                    { value: 1, duration: 300, easing: 'easeInOutSine' }
+                    { value: 1, duration: 400, easing: 'easeInOutSine' }
                   ],
                   complete: ()=>{
-                    window.scrollTo(0,document.querySelector("#root").scrollHeight);
+                    App.scrollTop();
                   }
                 });
 
                 //resize
                 bubble.classList.add("bubble_sticker");
+                
               }
             }
           });
         }, delay);
-      }, delay);
+      }, delay + 100);
     }else{
       dots.style.display = "none";
 
@@ -869,6 +1335,8 @@ var Bubble = {
 
         isAlbum = true;
         data = "./images/"+files[0]+".jpg";
+
+        vnode.attrs.files = files;
       }
     }else if(src !== null){
       isSticker = true;
@@ -918,16 +1386,132 @@ var LoadingDots = {
     ]);
   } 
 }
-var LoadingCartWheel = {
-  view: (vnode)=>{
-    console.log("--view--");
-    return m("#hello3", "Hello! Worlds Po!!!!");
-  } 
-}
 var App = {
   start: false,
+  index: 0,
+  images: [],
+  img: null,
+  audio: null,
+  
+  oninit:()=>{
+    //load audio
+    App.audio = new Audio("./images/pop.mp3");
+  },
+  pop: ()=>{
+    App.audio.play();
+  },
+  scrollTop: ()=>{
+      //window.scrollTo(0,document.querySelector("#root").scrollHeight);  
+      
+      let height = document.querySelector("#root").scrollHeight;
+      const scroll = {
+        y: window.pageYOffset
+      }
+
+      anime({
+        targets: scroll,
+        y: height,
+        //delay: 200,
+        duration: 500,
+        easing: 'easeInOutCubic',
+        update: () => window.scroll(0, scroll.y)
+      });
+  },
+  showDimmer: (files)=>{
+    console.log("---ShowDimmer---");
+
+    let dimmer = document.querySelector("#dimmer");
+    let slide = document.querySelector("#slide");
+
+    anime({
+      targets: [dimmer, slide],
+      duration: 800,
+      opacity: 1,
+      easing: 'easeInOutCubic',
+      delay: function(target, index) {
+        return index * 1000;
+      },
+    });
+    //translate(-50%, -50%) scale(0.5,0.5)
+    anime({
+      targets: slide,
+      delay: 1300,
+      duration: 1000,
+      height: "90%",
+      width: "85%",
+      easing: 'easeInOutCubic',
+      complete: ()=>{
+        let img = slide.querySelector("img");
+
+        App.img = img;
+        App.index =  0;
+        App.images = files;
+        App.showImages(img);
+      }
+    });
+  },
+  showImages: (img)=>{  
+    App.img.src = "./images/" + App.images[App.index] + ".jpg";
+    if(App.index == 0){
+      img.addEventListener("load", App.kenBurns);
+    }
+  },
+  kenBurns: ()=>{
+    let img = App.img;
+    let images = App.images;
+    
+    console.log("LOADED!!!", img.src);
+
+    anime({
+      targets: img,
+      opacity: [
+        { value: 0, duration: 100, delay: 0, easing: 'easeInOutSine' },
+        { value: 1, duration: 100, delay: 1, easing: 'easeInOutSine' },
+        { value: 0, duration: 100, delay: 100, easing: 'easeInOutSine' },
+        { value: 1, duration: 200, delay: 200, easing: 'easeInOutSine' },
+      ],
+      scale: [
+        { value: 1.1, duration: 0, delay: 0, easing: 'linear' },
+        { value: 1, duration: 3000, delay: 1, easing: 'linear' }
+      ],
+      complete: ()=>{
+        if(App.index < images.length -1 ){
+          App.showImages(img, images, ++App.index);
+        }else{
+          App.hideSlide();
+        }
+      }
+    });
+  },
+  hideSlide: ()=>{
+    console.log("---ShowDimmer---");
+
+    let dimmer = document.querySelector("#dimmer");
+    let slide = document.querySelector("#slide");
+
+    anime({
+      targets: [slide, dimmer],
+      duration: 800,
+      opacity: 0,
+      easing: 'easeInOutCubic',
+      delay: function(target, index) {
+        return index * 1000;
+      },
+      complete: ()=>{
+        slide.style.height = "55%";
+        slide.style.width = "50%";
+        App.img.removeEventListener("load", App.kenBurns);        
+        App.img.src = null;
+        App.img = null;
+        App.images = [];
+        App.index = 0;
+      }
+    });
+  },
+  onupdate: ()=>{
+    App.scrollTop();
+  },
   oncreate: ()=>{
-    console.log("Oncreate");
     setTimeout(()=>{
       App.start = true;
       Scenes.play();  
@@ -940,19 +1524,15 @@ var App = {
     
     if(App.start){  
       scenes = Scenes.getScene().slice();
-      //console.log("Current: ", scenes);      
-    }else{
-      //nothing
     }
-
-    //Add top bar
-    //scenes.push(m(TopBar));
     
     return  m("div",[
-      m(".container",
-        scenes
-      ),
+      m(".container", scenes),
       m(TopBar),
+      m("#dimmer"),
+      m("#slide",
+        m("img")
+      ),
     ]);
   }
 }

@@ -37,20 +37,21 @@ html, body {
     background-color: whitesmoke;
 }
     .topBar_left{
+        font-weight: bold;
         top: 50%;
         position: absolute;
         transform: translateY(-50%);
         left: 1em;
         color: dodgerblue;
-        font-size: 1.2em;
+        font-size: 1.5em;
         cursor: pointer;
     }
         .topBar_left:hover {
             text-decoration: underline dashed;
         }
         .topBar_left svg {
-            transform: translate(-8px, 3px);
-            width: 0.5em;
+            transform: translate(-7px, 6px);
+            width: 0.6em;
         }
         .topBar_left svg > g > g{
             stroke: #1e90ff;
@@ -64,12 +65,13 @@ html, body {
         transform: translate(-50%, -60%);
     }
     .topBar_right{
+        font-weight: bold;
         top: 50%;
         position: absolute;
         transform: translateY(-50%);
         right: 1em;
         color: dodgerblue;
-        font-size: 1.2em;
+        font-size: 1.5em;
     }
     
 .message{
@@ -85,16 +87,17 @@ html, body {
         text-align: right; 
     }
     .name{
-        font-size: 0.8rem;
+        font-size: 1rem;
         margin: 0 2.5rem;
     }
 
 .bubble{
+    font-size: 1.5rem;
     text-align: left;
     /* margin: 0 2rem; */
     margin: 0.1rem 2rem;
     display: inline-block;
-    max-width: 18rem;
+    max-width: 26rem;
     padding: 0.6rem 1rem;;
     border-radius: 1rem;
     position: relative;
@@ -168,8 +171,8 @@ html, body {
         background-color: lightgrey;        
     }
     .bubble_sticker{
-        height: 10rem;
-        width: 10rem;
+        height: 15rem;
+        width: 15rem;
     }
     .bubble_album_size{
         height: 20rem;
@@ -263,7 +266,7 @@ html, body {
     }
 
 .text{
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-align: center;
     margin: 0.5rem;
     opacity: 0;
@@ -273,8 +276,36 @@ html, body {
         font-weight: bold;
     }
     .text_sub{
-        font-size: 0.7rem;
+        font-size: 0.9rem;
         color: rgb(60, 95, 95);
+    }
+
+#dimmer{
+    background-color: rgba(0,0,0,0.85);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+#slide{
+    background-color: rgba(255,255,255,1);
+    height: 55%;
+    width: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    /* transform: scale(0.5,0.5); */
+}
+    #slide > img{
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
     }
 
 /* Animations */
