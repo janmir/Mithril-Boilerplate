@@ -29,7 +29,7 @@ html, body {
     width: 100%;
     height: 4em;
     position: fixed;
-    top: 0;
+    top: -2.6rem;
     left: 0;
     margin-bottom: 1em;
     border-bottom: 1px solid lightgray;
@@ -41,17 +41,17 @@ html, body {
         top: 50%;
         position: absolute;
         transform: translateY(-50%);
-        left: 1em;
+        left: 1.1em;
         color: dodgerblue;
-        font-size: 1.5em;
+        font-size: 2em;
         cursor: pointer;
     }
         .topBar_left:hover {
             text-decoration: underline dashed;
         }
         .topBar_left svg {
-            transform: translate(-7px, 6px);
-            width: 0.6em;
+            transform: translate(-15px, 6px);
+            width: 0.5em;
         }
         .topBar_left svg > g > g{
             stroke: #1e90ff;
@@ -76,7 +76,7 @@ html, body {
     
 .message{
     /* background-color: rgba(0,0,0,0.2); */
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     padding: 2rem;
     position: relative;
 }
@@ -87,18 +87,19 @@ html, body {
         text-align: right; 
     }
     .name{
-        font-size: 1rem;
-        margin: 0 2.5rem;
+        font-size: 1.2rem;
+        margin: 0 3rem;
+        font-weight: bold;
     }
 
 .bubble{
     font-size: 1.5rem;
     text-align: left;
-    /* margin: 0 2rem; */
-    margin: 0.1rem 2rem;
+    margin: 0 2.3rem;
+    /* margin: 0.1rem 2rem; */
     display: inline-block;
     max-width: 26rem;
-    padding: 0.6rem 1rem;;
+    padding: 0.8rem 1rem;;
     border-radius: 1rem;
     position: relative;
     overflow: hidden;
@@ -106,13 +107,22 @@ html, body {
     transition: all 0.2s linear;
 }
     .bubble_parent{
-        margin-bottom: 0.1rem;
+        /* margin-bottom: 0.1rem; */
+        position: relative;
     }
     .bubble_message{
         display: none;
         opacity: 0;
     }
-    .bubble_image{
+        .sub_message{
+            position: absolute;
+            font-size: 0.4rem;
+            right: 1.1rem;
+            bottom: 0.2rem;
+            color: gray;
+            display: none;
+        }
+    .bubble_image, .bubble_album_picture{
         position: absolute;
         height: 100%;
         object-fit: cover;
@@ -122,7 +132,7 @@ html, body {
         opacity: 0;      
     }
     .bubble_album {
-        background-color: black;
+        background-color: lightgrey;
         position: absolute;
         height: 100%;
         display: inline-block;
@@ -131,9 +141,11 @@ html, body {
         left: 0;
     }
         .bubble_album > img{
-            opacity: 0.8;
+            opacity: 0;
         }
         .bubble_counter{
+            background-color: rgba(0,0,0,0.4);
+            height: 100%;
             display: inline-block;
             position: absolute;
             top: 50%;
@@ -141,6 +153,12 @@ html, body {
             transform: translate(-50%, -50%);
             color: white;
             font-size: 7rem;
+            opacity: 0;
+            animation: 0.5s fade_in 0.5s linear;
+            animation-fill-mode: forwards;
+            width: 100%;
+            text-align: center;
+            line-height: 20rem;
         }
     .bubble_float_left{
         animation: float 1.5s ease-in-out infinite;
@@ -171,12 +189,17 @@ html, body {
         background-color: lightgrey;        
     }
     .bubble_sticker{
-        height: 15rem;
-        width: 15rem;
+        height: 10rem;
+        width: 10rem;
+        background-color: white;
+    }
+    .bubble_photo{
+        height: 16rem;
+        width: 16rem;
     }
     .bubble_album_size{
-        height: 20rem;
-        width: 20rem;
+        height: 16rem;
+        width: 16rem;
     }
 
 .avatar{
@@ -219,7 +242,8 @@ html, body {
     }
     .avatar_left{
         position: absolute;
-        bottom: 0rem;        
+        /* bottom: 0rem; */
+        bottom: 0.8rem;
         left: 1rem;
         display: block;        
     }
@@ -231,7 +255,8 @@ html, body {
     }
     .avatar_right{
         position: absolute;
-        bottom: 0rem;
+        /* bottom: 0rem; */
+        bottom: 0.8rem;
         right: 1rem;
         display: block;        
     }
@@ -291,7 +316,7 @@ html, body {
 }
 
 #slide{
-    background-color: rgba(255,255,255,1);
+    background-color: black;
     height: 55%;
     width: 50%;
     position: fixed;
@@ -300,13 +325,77 @@ html, body {
     opacity: 0;
     transform: translate(-50%, -50%);
     overflow: hidden;
+    border-radius: 0.2rem;
     /* transform: scale(0.5,0.5); */
 }
     #slide > img{
+        /*position: absolute;
+        top: 50%;
+        left: 50%;*/
+        opacity: 0;
         height: 100%;
         object-fit: cover;
         width: 100%;
     }
+
+#cover{
+    cursor: pointer;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: white;
+    background: radial-gradient(ellipse at center, #ffffff 26%,#dbdbdb 100%);
+    top: 0;
+    left: 0;
+}
+
+#qoute{
+    font-size: 1.1rem;
+    left: 50%;
+    display: inline-block;
+    padding: 1rem;
+    top: 50%;
+    text-align: center;
+    position: absolute;
+    text-indent: 1rem;
+    transform: translate(-50%, -65%);
+    color: dimgray;
+}
+    #qoute .msg{
+        font-style: italic;
+        font-weight: bold;    
+    }
+    #qoute img{
+        width: 1.5rem;
+    }
+    #qoute .qoute_right{
+        position: absolute;
+        bottom: 0;
+        right: 0rem;
+    }
+    #qoute .qoute_left{
+        position: absolute;
+        top: 0rem;
+        left: 0rem;
+    }
+
+    #qoute .by{
+        position: absolute;
+        right: 2rem;
+        bottom: -2rem;
+        font-size: 0.9rem;
+    }
+#subtitle{
+    font-size: 1.2rem;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.8);
+    padding: 0.3rem;
+    color: lightgray;
+    display: none;
+}
 
 /* Animations */
 @keyframes float {
@@ -329,6 +418,15 @@ html, body {
     100% {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+@keyframes fade_in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 

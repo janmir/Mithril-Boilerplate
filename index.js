@@ -1,9 +1,13 @@
 import m from "./mithril.js"
 import anime from './anime.js'
 
+/*********************Constants************************/
+const basePath =  "./static";
+
 /*********************SVGs************************/
-import back from './static/back.svg'
-import { setTimeout } from "timers";
+import back from './static/back.svg';
+// import { setTimeout } from "timers";
+
 
 /*********************Flow************************/
 //Lol
@@ -68,13 +72,13 @@ const data = [
     message: [ 
       {content:{
           type: "text",
-          data: {text: "Janeth Elano", sub: "joined the group."},
+          data: {text: "Catherine", sub: "just \"onlined\" herself."},
       }}
     ]
   },  
-  {//thenaj
-    name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+  {//cath
+    name: "Catherine Gallardo Idul",
+    src: basePath + "/cath.jpg",
     left: true,
     online: true,
     delay: 0,
@@ -82,17 +86,17 @@ const data = [
       {
         content:{
           type: "message",
-          data: "LOL",
+          data: "LOL😂",
         },
         pre_delay: 1000,
         post_delay: replyDelay,
-        subtitle: null
+        subtitle: "Laugh-Out-Loud",
       },
     ]
   },
   {//ken
     name: "Kennron Damsid",
-    src: "./static/ken.jpg",
+    src: basePath + "/ken.jpg",
     left: false,
     online: false,    
     delay: 0,
@@ -100,9 +104,9 @@ const data = [
       {
         content:{
           type: "message",
-          data: "?",
+          data: "😱????",
         },
-        pre_delay: 500, 
+        pre_delay: 1000, 
         post_delay: replyDelay,
         subtitle: null
       }
@@ -152,16 +156,7 @@ const data = [
           data: {text: "Bessie Mae", sub: "is now online."},
         }}
     ]
-  },  
-  {//online-cath
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Pikyasu", sub: "is now online."},
-        }}
-    ]
-  },  
+  },   
   {//online-dennis
     delay: textDelay,
     message: [ 
@@ -198,9 +193,9 @@ const data = [
         }}
     ]
   },  
-  {//thenaj
-    name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+  {//cath
+    name: "Catherine Gallardo Idul",
+    src: basePath + "/cath.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -210,14 +205,14 @@ const data = [
           type: "message",
           data: "Hoy, mga ate og kuya!",
         },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
+        pre_delay: 800, 
+        post_delay: replyDelay + 1000,
+        subtitle: "Ladies and Gentlemen!"
       },
       {
         content:{
           type: "message",
-          data: "Paghimu daw mo og message.",
+          data: "Happy 5-Years! 😊",
         },
         pre_delay: 100, 
         post_delay: replyDelay,
@@ -226,17 +221,25 @@ const data = [
       {
         content:{
           type: "message",
-          data: "5-year anniversary, char!",
+          data: "Nangita na Admin sa atong e-present bah.",
         },
-        pre_delay: 100, 
+        pre_delay: 800, 
+        post_delay: replyDelay + 2000,
+        subtitle: "Admin is already looking for our presentation."
+      },
+      {
+        content:{
+          type: "message",
+          data: "😰 Can we practice one more time? 🙏",
+        },
+        pre_delay: 800, 
         post_delay: replyDelay,
-        subtitle: null
       },
     ]
   },
   {//mark
     name: "Mark Cordova",
-    src: "./static/mark.jpg",
+    src: basePath + "/mark.jpg",
     left: false,
     online: false,    
     delay: 0,
@@ -244,17 +247,18 @@ const data = [
       {
         content:{
           type: "message",
-          data: "HAHAHAHAHA XD! Congrats mga Migs!",
+          data: "HAHAHAHA🤑! Congrats mga Migs!",
         },
         pre_delay: 2000, 
         post_delay: replyDelay,
-        subtitle: null
+        subtitle: null,
+        subMessage: "📱 Sent from iPhoneX."        
       }
     ]
   },
-  {//thenaj
-    name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+  {//Cath
+    name: "Catherine Gallardo Idul",
+    src: basePath + "/cath.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -262,17 +266,26 @@ const data = [
       {
         content:{
           type: "message",
-          data: "Ready namu?",
+          data: "Hubag-hubagan ko bah.",
+        },
+        pre_delay: 600, 
+        post_delay: replyDelay + 1000,
+        subtitle: "Like, having cold feet right now.😰"
+      },
+      {
+        content:{
+          type: "message",
+          data: "Ready nata?",
         },
         pre_delay: 100, 
         post_delay: replyDelay,
-        subtitle: null
+        subtitle: "We ready?"
       },
     ]
   },
   {//chrish
     name: "Christopher Maister",
-    src: "./static/chrish.jpg",
+    src: basePath + "/chrish.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -290,7 +303,7 @@ const data = [
   },
   {//dennis
     name: "Dennis Alvarez",
-    src: "./static/dennis.jpg",
+    src: basePath + "/dennis.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -308,7 +321,7 @@ const data = [
   },
   {//kuting
     name: "Christine Ronquillo",
-    src: "./static/kuting.jpg",
+    src: basePath + "/kuting.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -326,7 +339,7 @@ const data = [
   },
   {//me
     name: "Jan Paul Miranda",
-    src: "./static/jp.jpg",
+    src: basePath + "/jp.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -344,7 +357,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+    src: basePath + "/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -424,17 +437,18 @@ const data = [
       {
         content:{
           type: "message",
-          data: "{{1,2,3,4,5}}",
+          data: "{{1,2,3,4,5,6,7,8}}",
+          gap: 4000          
         },
         pre_delay: 200, 
-        post_delay: 1000 * 3 * (5 + 2),
+        post_delay: (4000 * 8) + (9000),
         subtitle: null
       }
     ]
   },
   {//Charles
     name: "Charles Go",
-    src: "./static/charles.jpg",
+    src: basePath + "/charles.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -452,7 +466,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+    src: basePath + "/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -497,7 +511,7 @@ const data = [
   },
   {//kuting
     name: "Christine Ronquillo",
-    src: "./static/kuting.jpg",
+    src: basePath + "/kuting.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -514,7 +528,7 @@ const data = [
       {
         content:{
           type: "message",
-          data: "::kuting::",
+          data: "@kuting",
         },
         pre_delay: 200, 
         post_delay: replyDelay,
@@ -578,7 +592,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./static/thenaj.jpg",
+    src: basePath + "/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -596,7 +610,7 @@ const data = [
   },
   {//Cath
     name: "Catherine Gallardo Idul",
-    src: "./static/cath.jpg",
+    src: basePath + "/cath.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -613,7 +627,7 @@ const data = [
       {
         content:{
           type: "message",
-          data: "::cath::",
+          data: "@cath",
         },
         pre_delay: 200, 
         post_delay: replyDelay,
@@ -659,7 +673,7 @@ const data = [
   },
   {//me
     name: "Jan Miranda",
-    src: "./static/jp.jpg",
+    src: basePath + "/jp.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -761,15 +775,6 @@ const data = [
         post_delay: replyDelay,
         subtitle: null
       },
-      /*{
-        content:{
-          type: "message",
-          data: "::hi::",
-        },
-        pre_delay: 0, 
-        post_delay: 500,
-        subtitle: null
-      },*/
       //Now, i'll leave you with a slideshow of our more recent pics.
       {
         content:{
@@ -793,10 +798,11 @@ const data = [
       {
         content:{
           type: "message",
-          data: "{{13,7,8,9,10,11,12,14}}",
+          data: "{{9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28}}",
+          gap: 2000
         },
         pre_delay: 200, 
-        post_delay: 1000 * 3 * (7 + 2),
+        post_delay: (2000 * 19) + (8000),
         subtitle: null
       }
     ]
@@ -917,7 +923,7 @@ const data = [
           data: {text: "Emelyn", sub: "has gone offline."},
         }}
     ]
-  }, 
+  },
 ];
 /*********************Scenes************************/
 var Scenes = {
@@ -950,6 +956,8 @@ var Scenes = {
       let content = message.content;
       let pre_delay = message.pre_delay || 0; //bubble loading
       let post_delay = message.post_delay + pre_delay || 0; //per message
+      let subMessage = message.subMessage;
+      let subTitle = message.subtitle || null;
       
       switch(content.type){
         case "text":{
@@ -957,16 +965,19 @@ var Scenes = {
             m(Text, {text: content.data.text, sub: content.data.sub, delay: delay}),
           );    
         }break;
-        case "picture":{
-
-        }break;     
         case "message":{
+          let gap = content.gap || 4000;
+
+          console.log("GAP: " + gap);
+          App.exposure = gap;
+
           //start push it
           if(isStart){
             let msg = content.data || null;
             Scenes.scenes.push(
               Message.getMessage(
-                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online,  delay: pre_delay}
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online,  delay: pre_delay,
+                  subMessage: subMessage, isFirst: true, subTitle: subTitle}
               )
             );
           }
@@ -979,7 +990,8 @@ var Scenes = {
             Scenes.scenes.push(
               Message.updateMessage(
                 oldMessage, 
-                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online, delay: pre_delay}
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online, delay: pre_delay,
+                  subMessage: subMessage, subTitle: subTitle}
               )
             );
           }
@@ -990,6 +1002,9 @@ var Scenes = {
       m.redraw();
       
       setTimeout(()=>{
+        //hide subs
+        App.hideSubtitle();
+
         //increment
         Scenes.timeline_sub++;
         Scenes.play();
@@ -1043,9 +1058,9 @@ var Text = {
 }
 var TopBar = {
   shown: false,
-  popTimeout: 10000,
-  showAll: (node)=>{
-    let nodes = node.querySelectorAll(".avatar");
+  popTimeout: 7000,
+  showAll: ()=>{
+    let nodes = document.querySelectorAll(".avatar");
 
     if(!TopBar.shown){
       anime({
@@ -1094,31 +1109,42 @@ var TopBar = {
 
     }
   }, 
-  oncreate: (vnode)=>{
+  start: (vnode)=>{
+      //show this
+      let t = document.querySelector(".topBar");
+      anime({
+        targets: t,
+        top: [
+          { value: 0, duration: 300, easing: 'easeInOutSine' }
+        ],
+      });
+
     setTimeout(()=>{
-      TopBar.showAll(vnode.dom);
+
+      //show children
+      TopBar.showAll();
     }, TopBar.popTimeout);
   },
   view: (vnode)=>{
     return m(".topBar", [
       m(".topBar_left", [
         m.trust(back),
-        "Batch19, Thenaj"
+        "Batch19"
       ]),
       m(".topBar_center",[
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: "./static/jp.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: "./static/jake.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: "./static/shine.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: "./static/kuting.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: "./static/bessie.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: "./static/charles.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: "./static/cath.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: "./static/dennis.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: "./static/em.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: "./static/chrish.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: "./static/mark.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: "./static/0.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: "./static/ken.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: basePath + "/jp.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: basePath + "/jake.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: basePath + "/shine.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: basePath + "/kuting.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: basePath + "/bessie.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: basePath + "/charles.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: basePath + "/cath.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: basePath + "/dennis.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: basePath + "/em.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: basePath + "/chrish.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: basePath + "/mark.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: basePath + "/0.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: basePath + "/ken.jpg"}),
       ]),
       m(".topBar_right", "Details"),      
     ]);
@@ -1136,25 +1162,24 @@ var Message = {
 
     //push old bubbles
     oldChild.forEach(el=>{
-      let text = el.innerHTML || null;
+      let text = el.innerText || null;
       let src = el.src || null;
 
       console.log("----------", text, "-----", src)
 
-      newChild.push(m(Bubble, {src: src, message: text, isLeft: data.isLeft}));
+      newChild.push(m(Bubble, {src: src, message: text, isLeft: data.isLeft, 
+        subMessage: data.subMessage}));
     });
     
     //push new bubble
-    newChild.push(m(Bubble, {message: data.msg, isLeft: data.isLeft, animate: true, delay: data.delay}));
+    newChild.push(m(Bubble, {message: data.msg, isLeft: data.isLeft, animate: true, 
+      delay: data.delay, subMessage: data.subMessage, subTitle: data.subTitle}));
     
     return m(".message",{
       className:  data.isLeft? "message_left":"message_right"
     }, newChild);
   },
   getMessage: (data)=>{
-    //play pop
-    App.pop();
-
     return m(Message, data);
   },
   view: (vnode)=>{
@@ -1165,13 +1190,17 @@ var Message = {
     let src = vnode.attrs.src;
     let online = vnode.attrs.online;
     let delay = vnode.attrs.delay || 100;
+    let subMessage = vnode.attrs.subMessage || null;
+    let isFirst = vnode.attrs.isFirst || false;
+    let subTitle = vnode.attrs.subTitle;
     
     return m(".message",{
         className:  isLeft? "message_left":"message_right"
       } ,[
         m(".name", name),
         m(Avatar, {isLeft: isLeft, isOnline: online, isProfile: false, name: name, src: src}),
-        msg ? m(Bubble, {message: msg, isLeft: isLeft, animate: true, delay: delay}) : null,
+        msg ? m(Bubble, {message: msg, isLeft: isLeft, animate: true, delay: delay, 
+          subMessage: subMessage, isFirst: isFirst, subTitle: subTitle}) : null,
       ]);
   } 
 }
@@ -1187,7 +1216,7 @@ var Avatar = {
     return m(".avatar",{
       className: isLeft !== null ? vnode.attrs.isLeft?"avatar_left":"avatar_right":"avatar_inline"
     },[
-      m("img.avatar_image", {src: vnode.attrs.src || "./static/0.jpg"}),
+      m("img.avatar_image", {src: vnode.attrs.src || basePath + "/0.jpg"}),
       m(".avatar_status", {
         className: vnode.attrs.isOnline?"avatar_status_online":"avatar_status_offline"
       }),
@@ -1202,8 +1231,17 @@ var Bubble = {
     let album = bubble.querySelector(".bubble_album");
     let image = bubble.querySelector(".bubble_image");
     let message = bubble.querySelector(".bubble_message");
+    let subMessage = bubble.querySelector(".sub_message");
     let animate = vnode.attrs.animate || false;
     let delay = vnode.attrs.delay / 2;
+    let subTitle = vnode.attrs.subTitle;
+
+    let isMessage = vnode.attrs.isMessage;
+    let isPhoto = vnode.attrs.isPhoto;
+    let isSticker = vnode.attrs.isSticker;
+    let isAlbum = vnode.attrs.isAlbum;
+
+    let isFirst = vnode.attrs.isFirst;
     
     if(image !== null){
       image.addEventListener("load", function() {
@@ -1237,8 +1275,19 @@ var Bubble = {
             complete: (anim)=>{
               dots.style.display = "none";
 
+              //play pop
+              if(isFirst){
+                App.pop();
+              }
+
+              //show if there is subtitle
+              if(subTitle !== null){
+                App.showSubtitle(subTitle);
+              }
+
               //show message
-              if(message !== null){
+              if(isMessage){
+    
                 message.style.display = "inline";                
 
                 anime({
@@ -1248,11 +1297,15 @@ var Bubble = {
                   ]
                 });
 
-              }else if(album !== null){
+                if(subMessage !== null){
+                  subMessage.style.display = "inline";    
+                }
+
+              }else if(isAlbum){
                 anime({
-                  targets: image,
+                  targets: album.querySelector("img"),
                   opacity: [
-                    { value: 0.7, duration: 400, easing: 'easeInOutSine' }
+                    { value: 1, duration: 300, delay: 100, easing: 'easeInOutSine' }
                   ],
                   complete: ()=>{
                     App.scrollTop();
@@ -1264,12 +1317,24 @@ var Bubble = {
 
                 //show dimmer
                 setTimeout(()=>{
-                  let files = vnode.attrs.files;
-
-                  App.showDimmer(files);                  
+                  App.showDimmer(vnode.attrs.files);                  
                 },1000);
 
-              }else if(image !== null){
+              }else if(isSticker){
+                //resize
+                bubble.classList.add("bubble_sticker");                
+
+                anime({
+                  targets: image,
+                  opacity: [
+                    { value: 1, duration: 400, easing: 'easeInOutSine' }
+                  ],
+                  complete: ()=>{
+                    App.scrollTop();
+                  }
+                });
+
+              }else if(isPhoto){
                 anime({
                   targets: image,
                   opacity: [
@@ -1281,9 +1346,8 @@ var Bubble = {
                 });
 
                 //resize
-                bubble.classList.add("bubble_sticker");
-                
-              }
+                bubble.classList.add("bubble_photo");            
+              }              
             }
           });
         }, delay);
@@ -1310,9 +1374,13 @@ var Bubble = {
     let classes = [];
     let data = vnode.attrs.message;
     let src = vnode.attrs.src;
+    let subMessage = vnode.attrs.subMessage || null;
     let count = 0;
 
+    console.log(vnode.attrs);
+
     let isSticker = false;
+    let isPhoto = false;
     let isAlbum = false;
     let isMessage = false;
     
@@ -1320,44 +1388,72 @@ var Bubble = {
     if(data !== null){
       let sticker = /::(\w+)::/.exec(data);
       let album = /{{([\d,]+)}}/.exec(data);
+      let photo = /@([\w]+)/.exec(data);
       
       if(sticker != null){
         console.log("Sticker Match: ", sticker)
         let file = sticker[1];
   
         isSticker = true;
-        data = "./static/"+file+".jpg";
-      }else
-      if(album != null){
+        data = basePath + "/_"+file+".jpg";
+      
+      }else if(photo != null){
+        console.log("Photo Match: ", photo)
+        let file = photo[1];
+  
+        isPhoto = true;
+        data = basePath + "/"+file+".jpg";
+
+      }else if(album != null){
         console.log("Album Match: ", album)
         let files = album[1].split(",");
         count = files.length;
 
         isAlbum = true;
-        data = "./static/"+files[0]+".jpg";
+        data = basePath + "/"+files[0]+".jpg";
 
         vnode.attrs.files = files;
       }
     }else if(src !== null){
-      isSticker = true;
+      let filename = src.split("/");
+      filename = filename[filename.length-1];
+
+      if(filename[0] === '_'){
+        //has prefix '_'
+        isSticker = true;
+      }else{
+        //no prefix
+        isPhoto = true;
+      }
+
       data = src;
     }
 
-    isMessage = !isSticker && !isAlbum;
+    isMessage = !isSticker && !isAlbum && !isPhoto;
+
+    vnode.attrs.isAlbum = isAlbum;
+    vnode.attrs.isSticker = isSticker;
+    vnode.attrs.isPhoto = isPhoto;
+    vnode.attrs.isMessage = isMessage;
+    
     classes.push( vnode.attrs.isLeft ? "bubble_left":"bubble_right");
     
     count = "+" + (count-1);
 
-    return m(".bubble_parent", 
+    return m(".bubble_parent", [
       m(".bubble", {
         className: classes
       },[
-        isSticker ? m("img.bubble_image", {src: data}):null,
-        isAlbum ? m(".bubble_album",[m("img.bubble_image", {src: data}),m(".bubble_counter", count)]):null,
-        isMessage ? m("span.bubble_message",data):null,
-        m(LoadingDots)
+        isSticker || isPhoto ? m("img.bubble_image", {src: data}) : null,
+        isAlbum ? m(".bubble_album",[
+          m("img.bubble_album_picture", {src: data}),
+          m(".bubble_counter", count)
+        ]) : null,
+        isMessage ? m("span.bubble_message",data) : null,
+        m(LoadingDots),
+        subMessage !== null ? m(".sub_message", "Sent from iPhoneX") : null,
       ])
-    );
+    ]);
   } 
 }
 var LoadingDots = {
@@ -1390,15 +1486,22 @@ var App = {
   start: false,
   index: 0,
   images: [],
-  img: null,
-  audio: null,
+
+  pop_audio: null,
+  woosh_audio: null,
+
+  img1: null,
+  img2: null,
+
+  exposure: 4000,
   
   oninit:()=>{
     //load audio
-    App.audio = new Audio("./static/pop.mp3");
+    App.pop_audio = new Audio(basePath + "/pop.mp3");
+    App.woosh_audio = new Audio(basePath + "/woosh.mp3");
   },
   pop: ()=>{
-    App.audio.play();
+    App.pop_audio.play();
   },
   scrollTop: ()=>{
       //window.scrollTo(0,document.querySelector("#root").scrollHeight);  
@@ -1441,42 +1544,54 @@ var App = {
       width: "85%",
       easing: 'easeInOutCubic',
       complete: ()=>{
-        let img = slide.querySelector("img");
+        let img1 = slide.querySelector(".img1");
+        //let img2 = slide.querySelector(".img2");
 
-        App.img = img;
+        App.img1 = img1;
+        //App.img2 = img2;
+
         App.index =  0;
         App.images = files;
-        App.showImages(img);
+
+        //Attach listener
+        App.img1.addEventListener("load", App.kenBurns);        
+
+        App.showImages();
       }
     });
   },
-  showImages: (img)=>{  
-    App.img.src = "./static/" + App.images[App.index] + ".jpg";
-    if(App.index == 0){
-      img.addEventListener("load", App.kenBurns);
-    }
+  showImages: ()=>{  
+    App.img1.src = basePath + "/" + App.images[App.index] + ".jpg";
   },
   kenBurns: ()=>{
-    let img = App.img;
-    let images = App.images;
-    
-    console.log("LOADED!!!", img.src);
-
+    console.log("LOADED!!!", App.img1.src);
+    let wait = (App.exposure - 300);
     anime({
-      targets: img,
+      targets: App.img1,
+      /*translateX: [
+        { value: "-50%", duration: 0, delay: 0, easing: 'linear' },
+      ],
+      translateY: [
+        { value: "-50%", duration: 0, delay: 0, easing: 'linear' },
+      ],*/
       opacity: [
-        { value: 0, duration: 100, delay: 0, easing: 'easeInOutSine' },
-        { value: 1, duration: 100, delay: 1, easing: 'easeInOutSine' },
-        { value: 0, duration: 100, delay: 100, easing: 'easeInOutSine' },
-        { value: 1, duration: 200, delay: 200, easing: 'easeInOutSine' },
+        { value: 0, duration: 0, delay: 0, easing: 'easeInOutSine' },
+        { value: 1, duration: 200, delay: 0, easing: 'easeInOutSine' },
+        { value: 0, duration: 300, delay: wait, easing: 'easeInOutSine' },
       ],
       scale: [
-        { value: 1.1, duration: 0, delay: 0, easing: 'linear' },
-        { value: 1, duration: 3000, delay: 1, easing: 'linear' }
+        { value: 1.08, duration: 0, delay: 0, easing: 'linear' },
+        { value: 1.0, duration: App.exposure, delay: 1, easing: 'linear' }
       ],
       complete: ()=>{
-        if(App.index < images.length -1 ){
-          App.showImages(img, images, ++App.index);
+        if(App.index < App.images.length - 1 ){
+          App.index++;
+
+          if(App.index == App.images.length - 1){
+            App.exposure += 2000;
+          }
+
+          App.showImages();
         }else{
           App.hideSlide();
         }
@@ -1500,9 +1615,13 @@ var App = {
       complete: ()=>{
         slide.style.height = "55%";
         slide.style.width = "50%";
-        App.img.removeEventListener("load", App.kenBurns);        
-        App.img.src = null;
-        App.img = null;
+
+        App.img1.removeEventListener("load", App.kenBurns);        
+        App.img1.src = "";
+        //App.img2.src = "";
+        App.img1 = null;
+        //App.img2 = null;
+        
         App.images = [];
         App.index = 0;
       }
@@ -1511,11 +1630,40 @@ var App = {
   onupdate: ()=>{
     App.scrollTop();
   },
-  oncreate: ()=>{
-    setTimeout(()=>{
-      App.start = true;
-      Scenes.play();  
-    }, 2000);
+  startScene: ()=>{
+    App.woosh_audio.play();
+
+    //hide the cover
+    let cover = document.getElementById("cover");
+    anime({
+      targets: cover,
+      scale: [
+        { value: 0.2, duration: 500, delay: 0, easing: 'easeInOutBack' }
+      ],
+      opacity: [
+        { value: 0, duration: 200, delay: 200, easing: 'easeInOutBack' }
+      ],
+      complete:()=>{
+        //hide the cover
+        cover.style.display = "none";
+
+        //start animation
+        setTimeout(()=>{
+          App.start = true;
+          TopBar.start();
+          Scenes.play();  
+        }, 1000);
+      }
+    });
+  },
+  showSubtitle: (msg)=>{
+    let subTitle = document.getElementById("subtitle");
+    subTitle.innerHTML = msg;
+    subTitle.style.display = "inline-block";
+  },
+  hideSubtitle: ()=>{
+    let subTitle = document.getElementById("subtitle");
+    subTitle.style.display = "none";
   },
   view: (vnode)=>{
     console.log("Redraw:", vnode);
@@ -1530,9 +1678,22 @@ var App = {
       m(".container", scenes),
       m(TopBar),
       m("#dimmer"),
-      m("#slide",
-        m("img")
-      ),
+      m("#slide",[
+        //m("img.img2"),
+        m("img.img1"),
+      ]),
+      App.start ? null:m("#cover",
+        {
+          onclick: App.startScene
+        },[
+        m("#qoute",[
+          m("img.qoute_left", {src:basePath + "/qoute_left.svg"}),
+          m("span.msg","Advanced World Systems, Inc. & Advanced World Solutions, Inc.. Thank you for everything, from the bottom of our ❤️s."),
+          m("img.qoute_right", {src:basePath + "/qoute_right.svg"}),
+          m(".by", "—— 🅰️ction 🅱️atch 1️⃣9️⃣")
+        ])
+      ]),
+      m("#subtitle")
     ]);
   }
 }
