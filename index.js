@@ -2,7 +2,7 @@ import m from "./mithril.js"
 import anime from './anime.js'
 
 /*********************SVGs************************/
-import back from './images/back.svg'
+import back from './static/back.svg'
 import { setTimeout } from "timers";
 
 /*********************Flow************************/
@@ -74,7 +74,7 @@ const data = [
   },  
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,
     delay: 0,
@@ -92,7 +92,7 @@ const data = [
   },
   {//ken
     name: "Kennron Damsid",
-    src: "./images/ken.jpg",
+    src: "./static/ken.jpg",
     left: false,
     online: false,    
     delay: 0,
@@ -200,7 +200,7 @@ const data = [
   },  
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -236,7 +236,7 @@ const data = [
   },
   {//mark
     name: "Mark Cordova",
-    src: "./images/mark.jpg",
+    src: "./static/mark.jpg",
     left: false,
     online: false,    
     delay: 0,
@@ -254,7 +254,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -262,7 +262,7 @@ const data = [
       {
         content:{
           type: "message",
-          data: "You, guys ready?",
+          data: "Ready namu?",
         },
         pre_delay: 100, 
         post_delay: replyDelay,
@@ -272,7 +272,7 @@ const data = [
   },
   {//chrish
     name: "Christopher Maister",
-    src: "./images/chrish.jpg",
+    src: "./static/chrish.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -290,7 +290,7 @@ const data = [
   },
   {//dennis
     name: "Dennis Alvarez",
-    src: "./images/dennis.jpg",
+    src: "./static/dennis.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -308,7 +308,7 @@ const data = [
   },
   {//kuting
     name: "Christine Ronquillo",
-    src: "./images/kuting.jpg",
+    src: "./static/kuting.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -326,7 +326,7 @@ const data = [
   },
   {//me
     name: "Jan Paul Miranda",
-    src: "./images/jp.jpg",
+    src: "./static/jp.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -344,7 +344,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -361,7 +361,7 @@ const data = [
       {
         content:{
           type: "message",
-          data: "Let's start!",
+          data: "Let's make this \"Short But Sweet\"!",
         },
         pre_delay: 200, 
         post_delay: replyDelay,
@@ -415,7 +415,7 @@ const data = [
       {
         content:{
           type: "message",
-          data: "First, some throwbacks.",
+          data: "First, here are some throwbacks.",
         },
         pre_delay: 4000, 
         post_delay: replyDelay,
@@ -427,14 +427,14 @@ const data = [
           data: "{{1,2,3,4,5}}",
         },
         pre_delay: 200, 
-        post_delay: 1000 * 30,
+        post_delay: 1000 * 3 * (5 + 2),
         subtitle: null
       }
     ]
   },
   {//Charles
     name: "Charles Go",
-    src: "./images/charles.jpg",
+    src: "./static/charles.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -452,7 +452,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -497,7 +497,7 @@ const data = [
   },
   {//kuting
     name: "Christine Ronquillo",
-    src: "./images/kuting.jpg",
+    src: "./static/kuting.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -578,7 +578,7 @@ const data = [
   },
   {//thenaj
     name: "Janeth Elano",
-    src: "./images/thenaj.jpg",
+    src: "./static/thenaj.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -596,7 +596,7 @@ const data = [
   },
   {//Cath
     name: "Catherine Gallardo Idul",
-    src: "./images/cath.jpg",
+    src: "./static/cath.jpg",
     left: false,
     online: true,    
     delay: 0,
@@ -659,7 +659,7 @@ const data = [
   },
   {//me
     name: "Jan Miranda",
-    src: "./images/jp.jpg",
+    src: "./static/jp.jpg",
     left: true,
     online: true,    
     delay: 0,
@@ -793,10 +793,10 @@ const data = [
       {
         content:{
           type: "message",
-          data: "{{6,7,8,9,10,11,12}}",
+          data: "{{13,7,8,9,10,11,12,14}}",
         },
         pre_delay: 200, 
-        post_delay: 1000 * 40,
+        post_delay: 1000 * 3 * (7 + 2),
         subtitle: null
       }
     ]
@@ -1106,19 +1106,19 @@ var TopBar = {
         "Batch19, Thenaj"
       ]),
       m(".topBar_center",[
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: "./images/jp.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: "./images/jake.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: "./images/shine.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: "./images/kuting.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: "./images/bessie.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: "./images/charles.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: "./images/cath.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: "./images/dennis.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: "./images/em.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: "./images/chrish.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: "./images/mark.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: "./images/0.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: "./images/ken.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: "./static/jp.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: "./static/jake.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: "./static/shine.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: "./static/kuting.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: "./static/bessie.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: "./static/charles.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: "./static/cath.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: "./static/dennis.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: "./static/em.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: "./static/chrish.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: "./static/mark.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: "./static/0.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: "./static/ken.jpg"}),
       ]),
       m(".topBar_right", "Details"),      
     ]);
@@ -1187,7 +1187,7 @@ var Avatar = {
     return m(".avatar",{
       className: isLeft !== null ? vnode.attrs.isLeft?"avatar_left":"avatar_right":"avatar_inline"
     },[
-      m("img.avatar_image", {src: vnode.attrs.src || "./images/0.jpg"}),
+      m("img.avatar_image", {src: vnode.attrs.src || "./static/0.jpg"}),
       m(".avatar_status", {
         className: vnode.attrs.isOnline?"avatar_status_online":"avatar_status_offline"
       }),
@@ -1326,7 +1326,7 @@ var Bubble = {
         let file = sticker[1];
   
         isSticker = true;
-        data = "./images/"+file+".jpg";
+        data = "./static/"+file+".jpg";
       }else
       if(album != null){
         console.log("Album Match: ", album)
@@ -1334,7 +1334,7 @@ var Bubble = {
         count = files.length;
 
         isAlbum = true;
-        data = "./images/"+files[0]+".jpg";
+        data = "./static/"+files[0]+".jpg";
 
         vnode.attrs.files = files;
       }
@@ -1395,7 +1395,7 @@ var App = {
   
   oninit:()=>{
     //load audio
-    App.audio = new Audio("./images/pop.mp3");
+    App.audio = new Audio("./static/pop.mp3");
   },
   pop: ()=>{
     App.audio.play();
@@ -1451,7 +1451,7 @@ var App = {
     });
   },
   showImages: (img)=>{  
-    App.img.src = "./images/" + App.images[App.index] + ".jpg";
+    App.img.src = "./static/" + App.images[App.index] + ".jpg";
     if(App.index == 0){
       img.addEventListener("load", App.kenBurns);
     }

@@ -1,0 +1,357 @@
+html, body {
+    /* overflow: hidden; */
+    font-size: 27px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+@media screen and (min-width: 0px) and (max-width: 1210px) {
+    .topBar_center { display: none; }
+}
+@media screen and (min-width: 1211px) and (max-width: 1920px) {
+    .topBar_center { display: inline-block; }
+}
+
+#root{
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    /* height: 100%; */
+    width: 100%;
+    /* background-color: rgba(200,0,0,0.4); */
+}
+
+.topBar{
+    font-size: 18px;
+
+    width: 100%;
+    height: 4em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-bottom: 1em;
+    border-bottom: 1px solid lightgray;
+    box-shadow: 0 0 9px 1px #0000002b;
+    background-color: whitesmoke;
+}
+    .topBar_left{
+        font-weight: bold;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        left: 1em;
+        color: dodgerblue;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+        .topBar_left:hover {
+            text-decoration: underline dashed;
+        }
+        .topBar_left svg {
+            transform: translate(-7px, 6px);
+            width: 0.6em;
+        }
+        .topBar_left svg > g > g{
+            stroke: #1e90ff;
+        }
+    .topBar_center{
+        top: 50%;
+        white-space: nowrap;
+        text-overflow: clip;
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -60%);
+    }
+    .topBar_right{
+        font-weight: bold;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        right: 1em;
+        color: dodgerblue;
+        font-size: 1.5em;
+    }
+    
+.message{
+    /* background-color: rgba(0,0,0,0.2); */
+    margin-top: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+    .message_left{
+        text-align: left;        
+    }
+    .message_right{
+        text-align: right; 
+    }
+    .name{
+        font-size: 1rem;
+        margin: 0 2.5rem;
+    }
+
+.bubble{
+    font-size: 1.5rem;
+    text-align: left;
+    /* margin: 0 2rem; */
+    margin: 0.1rem 2rem;
+    display: inline-block;
+    max-width: 26rem;
+    padding: 0.6rem 1rem;;
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+
+    transition: all 0.2s linear;
+}
+    .bubble_parent{
+        margin-bottom: 0.1rem;
+    }
+    .bubble_message{
+        display: none;
+        opacity: 0;
+    }
+    .bubble_image{
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        top: 0;
+        left: 0;  
+        opacity: 0;      
+    }
+    .bubble_album {
+        background-color: black;
+        position: absolute;
+        height: 100%;
+        display: inline-block;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+        .bubble_album > img{
+            opacity: 0.8;
+        }
+        .bubble_counter{
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 7rem;
+        }
+    .bubble_float_left{
+        animation: float 1.5s ease-in-out infinite;
+        border-bottom-left-radius: 0; 
+    }
+    .bubble_float_right{
+        animation: float 1.5s ease-in-out infinite;
+        border-bottom-right-radius: 0; 
+    }
+    .bubble_rotate_left{
+        transform-origin: bottom left;
+        animation: rotate_left 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation-fill-mode: forwards;
+        border-bottom-left-radius: 0; 
+    }
+    .bubble_rotate_right{
+        transform-origin: bottom right;
+        animation: rotate_right 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation-fill-mode: forwards;
+        border-bottom-right-radius: 0; 
+    }
+    .bubble_left{
+        /* background-color: lightskyblue;         */
+        background-color: dodgerblue;
+        color: white;
+    }
+    .bubble_right{
+        background-color: lightgrey;        
+    }
+    .bubble_sticker{
+        height: 15rem;
+        width: 15rem;
+    }
+    .bubble_album_size{
+        height: 20rem;
+        width: 20rem;
+    }
+
+.avatar{
+    height: 3rem;
+    width: 3rem;
+    background-color: darksalmon;
+    border-radius: 2rem;
+    box-shadow: 0 0 0 2.5px #d8d8d8;
+    opacity: 0;
+    transform: scale(0);
+    display: none;
+}
+    .avatar_image{
+        border-radius: 2em;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+    }
+    .avatar_animate{
+        animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        animation-fill-mode: forwards;
+    }
+    .avatar_name{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        letter-spacing: 0.02em;
+        color: dimgray;
+        bottom: 0;
+        position: absolute;
+        font-size: 0.5em;
+        display: inline-block;
+        width: 5.8em;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%, 145%);
+        overflow: hidden;
+    }
+    .avatar_left{
+        position: absolute;
+        bottom: 0rem;        
+        left: 1rem;
+        display: block;        
+    }
+    .avatar_inline{
+        height: 1.8em;
+        width: 1.8em;
+        margin: 0.7em;
+        display: inline-block;
+    }
+    .avatar_right{
+        position: absolute;
+        bottom: 0rem;
+        right: 1rem;
+        display: block;        
+    }
+    .avatar_status{
+        height: 0.8em;
+        width: 0.8em;
+        border-radius: 1em;
+        position: absolute;
+        bottom: 0;
+        right: -0.1em;
+        box-shadow: 0 0 0 1.5px #d8d8d8;
+    }
+    .avatar_status_online{
+        background-color: rgb(66, 183, 42);
+    }
+    .avatar_status_offline{
+        background-color: gray;
+    }
+
+.loading_dots{
+    /* background-color: red; */
+    height: 1rem;
+}
+    .dot{
+        border-radius: 0.5rem;
+        margin: 0.1rem;
+        float: left;
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: black;
+        opacity: 1;
+    }
+
+.text{
+    font-size: 1rem;
+    text-align: center;
+    margin: 0.5rem;
+    opacity: 0;
+}
+    .text_main{
+        color: rgb(35, 53, 53);
+        font-weight: bold;
+    }
+    .text_sub{
+        font-size: 0.9rem;
+        color: rgb(60, 95, 95);
+    }
+
+#dimmer{
+    background-color: rgba(0,0,0,0.85);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+#slide{
+    background-color: rgba(255,255,255,1);
+    height: 55%;
+    width: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    /* transform: scale(0.5,0.5); */
+}
+    #slide > img{
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+    }
+
+/* Animations */
+@keyframes float {
+    0% {
+        transform: translatey(0px) scale(1);
+    }
+    50% {
+        transform: translatey(-10px) scale(1.1);
+    }
+    100% {
+        transform: translatey(0px) scale(1);
+    }
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes rotate_left {
+    0% {
+        opacity: 0;
+        transform: rotate(90deg) scale(0.5) translatey(2px);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1) translatey(0px);
+    }
+}
+
+@keyframes rotate_right {
+    0% {
+        opacity: 0;
+        transform: rotate(-90deg) scale(0.5);
+    }
+    100% {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+/* Ken burns for pictures */
