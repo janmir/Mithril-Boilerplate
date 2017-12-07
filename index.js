@@ -2,929 +2,1282 @@ import m from "./mithril.js"
 import anime from './anime.js'
 
 /*********************Constants************************/
-const basePath =  "./static";
+//https://url.janmir.me/batch19/static
+//const basePath =  "./static";
+const basePath =  "http://batch19.janmir.me.s3-website-ap-northeast-1.amazonaws.com/static";
 
 /*********************SVGs************************/
 import back from './static/back.svg';
-// import { setTimeout } from "timers";
 
-
-/*********************Flow************************/
-//Lol
-//<drop Top bar, show online/offline>
-//? -> ken
-//Hoy! maghimu daw ta group message, ready namu? (with subtitle)
-//(Y) -> jake, shine, kuting, bess, jp, kath, denz, charles, em, 
-//Whatever man -> chrish
-//Nice.
-//Okay, let's make this one quick.
-//.
-//.
-//.
-//Hello World,
-//We are batch 19.
-//To start here are some throwbacks.
-//<pic><pic><pic>
-//(puke) "gross"? <sticker>
-//I know right?,...hahahaha
-//Next.
-//I belive you guys have something to say.
-//<pic> message X10
-//insert ken/mark/jessie reactions
-//We done?
-//Ok good.
-//Phew! amazing 5 years, congrats!
-//otsukaresama deshita minna! <sticker>
-//Before i end this, I would like to say thanks to 
-//--kyasu for our christmas dinner this 25th!
-//--bossing for the visit *soon - chicken joy please.
-//--bessie & shine for the disgusting pics!
-//--marvel for the new avengers movie
-//--DC for trying :D 
-//--笑
-//Now, i'll leave you with a slideshow of our more recent pics.
-//enjoi!
-//bye bye!
-//yeah! <drop mic> <sticker>
-//<pics><pic><pic>
-//以上
-//to offline all in order nice! random permutation
-//name is now offline
-/*********************Snippets************************/
-/*
-  oldChild = Array.prototype.slice.call(oldChild);
-  anime({
-    targets: el,
-    opacity: [
-      { value: 1, duration: 500, delay: 0, easing: 'easeInOutSine' }
-    ],
-    rotate: [
-      { value: 0, duration: 500, delay: 0, easing: 'easeInOutSine' }
-    ],
-  });
-*/
 /*********************Data************************/
 const replyDelay = 2000;
 const textDelay = 200;
-const data = [
+/*const data = [
   {
-    delay: 1000,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Catherine", sub: "just \"onlined\" herself."},
+    "delay": 2000,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Catherine", "sub": "forcefully \"onlined\" herself."}
       }}
     ]
   },  
-  {//cath
-    name: "Catherine Gallardo Idul",
-    src: basePath + "/cath.jpg",
-    left: true,
-    online: true,
-    delay: 0,
-    message: [ 
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": true,
+    "online": true,
+    "delay": 2000,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "LOL😂",
+        "content":{
+          "type": "message",
+          "data": "LOL😂"
         },
-        pre_delay: 1000,
-        post_delay: replyDelay,
-        subtitle: "Laugh-Out-Loud",
-      },
-    ]
-  },
-  {//ken
-    name: "Kennron Damsid",
-    src: basePath + "/ken.jpg",
-    left: false,
-    online: false,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "😱????",
-        },
-        pre_delay: 1000, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 75,
+        "chat_delay_multiple": 2,
+        "subtitle": "Laugh-Out-Loud"
       }
     ]
   },
-  {//online-kuting
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Christine", sub: "is now online."},
+  {
+    "name": "Kennron Damsid",
+    "src": "/ken.jpg",
+    "left": false,
+    "online": false,    
+    "delay": 2000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "😱????"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": "What?"
+      }
+    ]
+  },
+  {
+    "delay": 200,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Christine", "sub": "is now online."}
       }}
     ]
   },  
-  {//online-jp
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Jp", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Jp", "sub": "is now online."}
       }}
     ]
   },  
-  {//online-jake
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Jake", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Jake", "sub": "is now online."}
       }}
     ]
   },  
-  {//online-shine
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Sheena Mae", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Sheena Mae", "sub": "is now online."}
         }}
     ]
   },  
-  {//online-bessie
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Bessie Mae", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Bessie Mae", "sub": "is now online."}
         }}
     ]
   },   
-  {//online-dennis
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Dennis", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Dennis", "sub": "is now online."}
         }}
     ]
   },  
-  {//online-christopher
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Christopher", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Christopher", "sub": "is now online."}
         }}
     ]
   },  
-  {//online-charles
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Charles", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Charles", "sub": "is now online."}
         }}
     ]
   },  
-  {//online-em
-    delay: 1000,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Emelyn", sub: "is now online."},
+  {
+    "delay": 200,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Emelyn", "sub": "is now online."}
         }}
     ]
   },  
-  {//cath
-    name: "Catherine Gallardo Idul",
-    src: basePath + "/cath.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": true,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "Hoy, mga ate og kuya!",
+        "content":{
+          "type": "message",
+          "data": "Hoy, mga ate og kuya!"
         },
-        pre_delay: 800, 
-        post_delay: replyDelay + 1000,
-        subtitle: "Ladies and Gentlemen!"
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": "Ladies and Gentlemen!"
       },
       {
-        content:{
-          type: "message",
-          data: "Happy 5-Years! 😊",
+        "content":{
+          "type": "message",
+          "data": "Happy 5-Years! 😊"
         },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
       },
       {
-        content:{
-          type: "message",
-          data: "Nangita na Admin sa atong e-present bah.",
+        "content":{
+          "type": "message",
+          "data": "Nangita na Admin sa atong e-present bah."
         },
-        pre_delay: 800, 
-        post_delay: replyDelay + 2000,
-        subtitle: "Admin is already looking for our presentation."
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": "Admin is already asking for our presentation."
       },
       {
-        content:{
-          type: "message",
-          data: "😰 Can we practice one more time? 🙏",
+        "content":{
+          "type": "message",
+          "data": "But, before I send it."
         },
-        pre_delay: 800, 
-        post_delay: replyDelay,
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2
       },
-    ]
-  },
-  {//mark
-    name: "Mark Cordova",
-    src: basePath + "/mark.jpg",
-    left: false,
-    online: false,    
-    delay: 0,
-    message: [ 
       {
-        content:{
-          type: "message",
-          data: "HAHAHAHA🤑! Congrats mga Migs!",
+        "content":{
+          "type": "message",
+          "data": "Can we practice one more time? 😰🙏"
         },
-        pre_delay: 2000, 
-        post_delay: replyDelay,
-        subtitle: null,
-        subMessage: "📱 Sent from iPhoneX."        
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2
       }
     ]
   },
-  {//Cath
-    name: "Catherine Gallardo Idul",
-    src: basePath + "/cath.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Mark Cordova",
+    "src": "/mark.jpg",
+    "left": false,
+    "online": false,    
+    "delay": 0,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "Hubag-hubagan ko bah.",
+        "content":{
+          "type": "message",
+          "data": "HAHAHAHA📱🤑! Congrats mga Migs!"
         },
-        pre_delay: 600, 
-        post_delay: replyDelay + 1000,
-        subtitle: "Like, having cold feet right now.😰"
-      },
-      {
-        content:{
-          type: "message",
-          data: "Ready nata?",
-        },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: "We ready?"
-      },
-    ]
-  },
-  {//chrish
-    name: "Christopher Maister",
-    src: basePath + "/chrish.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "Yeah, whatever.",
-        },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-    ]
-  },
-  {//dennis
-    name: "Dennis Alvarez",
-    src: basePath + "/dennis.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "::trap::",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 30, 
+        "chat_delay_multiple": 1.5,
+        "subtitle": null,
+        "submessage": "Sent from iPhoneX."        
       }
     ]
   },
-  {//kuting
-    name: "Christine Ronquillo",
-    src: basePath + "/kuting.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": true,
+    "online": true,    
+    "delay": 500,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "::like::",
+        "content":{
+          "type": "message",
+          "data": "Hubag-hubagan ko."
         },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": "I feel nervous...😰"
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Ready nata?"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": "We ready?"
       }
     ]
   },
-  {//me
-    name: "Jan Paul Miranda",
-    src: basePath + "/jp.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Christopher Maister",
+    "src": "/chrish.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "::noooo::",
+        "content":{
+          "type": "message",
+          "data": "Yeah, whatever."
         },
-        pre_delay: 200, 
-        post_delay: 500,
-        subtitle: null
-      },
-    ]
-  },
-  {//thenaj
-    name: "Janeth Elano",
-    src: basePath + "/thenaj.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "Nice!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Let's make this \"Short But Sweet\"!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: ".",
-        },
-        pre_delay: 0, 
-        post_delay: 200,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: ".",
-        },
-        pre_delay: 0, 
-        post_delay: 200,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: ".",
-        },
-        pre_delay: 0, 
-        post_delay: 2000,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "::hi::",
-        },
-        pre_delay: 0, 
-        post_delay: 500,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Hello minna-san!",
-        },
-        pre_delay: 1000, 
-        post_delay: 3000,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "First, here are some throwbacks.",
-        },
-        pre_delay: 4000, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "{{1,2,3,4,5,6,7,8}}",
-          gap: 4000          
-        },
-        pre_delay: 200, 
-        post_delay: (4000 * 8) + (9000),
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
       }
     ]
   },
-  {//Charles
-    name: "Charles Go",
-    src: basePath + "/charles.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Dennis Alvarez",
+    "src": "/dennis.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "HAHA",
+        "content":{
+          "type": "message",
+          "data": "::trap::"
         },
-        pre_delay: 4000, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
       }
     ]
   },
-  {//thenaj
-    name: "Janeth Elano",
-    src: basePath + "/thenaj.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Christine Ronquillo",
+    "src": "/kuting.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1200,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "I know right!",
+        "content":{
+          "type": "message",
+          "data": "::like::"
         },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Next!",
-        },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "I believe you guys want to say something?",
-        },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Let's start with Kuting. XD",
-        },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-    ]
-  },
-  {//kuting
-    name: "Christine Ronquillo",
-    src: basePath + "/kuting.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "Hello, I'm Kuting.",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "@kuting",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Ummm",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Just wanna say...",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Sa tanang naa utang naku",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Bayad namu!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Also,",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Thanks, AWS.",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
       }
     ]
   },
-  {//thenaj
-    name: "Janeth Elano",
-    src: basePath + "/thenaj.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
+  {
+    "name": "Jan Paul Miranda",
+    "src": "/jp.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 2000,
+    "message": [ 
       {
-        content:{
-          type: "message",
-          data: "Kyasu! I choose you!",
+        "content":{
+          "type": "message",
+          "data": "::noooo::"
         },
-        pre_delay: 100, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-    ]
-  },
-  {//Cath
-    name: "Catherine Gallardo Idul",
-    src: basePath + "/cath.jpg",
-    left: false,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "Err....mam? K",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "@cath",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Cath here.",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Cath there.",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "AWS",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Thanks & Goodbye!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-    ]
-  },
-  {//me
-    name: "Jan Miranda",
-    src: basePath + "/jp.jpg",
-    left: true,
-    online: true,    
-    delay: 0,
-    message: [ 
-      {
-        content:{
-          type: "message",
-          data: "We done?",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "Good!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      }, 
-      {
-        content:{
-          type: "message",
-          data: "Phew! amazing 5 years, congrats!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //otsukaresama deshita minna! <sticker>
-      {
-        content:{
-          type: "message",
-          data: "Otsukaresamadeshita minna!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //Before i end this, I would like to say thanks to 
-      {
-        content:{
-          type: "message",
-          data: "Before i end this, I would like to say thanks to:",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //--kyasu for our christmas dinner this 25th!
-      {
-        content:{
-          type: "message",
-          data: "1. Kyasu: for our christmas dinner this 25th!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //--bossing for the visit *soon - chicken joy please.
-      {
-        content:{
-          type: "message",
-          data: "2. Bossing: for the visit *soon - chicken joy please.",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //--bessie & shine for the disgusting pics!
-      {
-        content:{
-          type: "message",
-          data: "3. Kuting, em, bessie & shine: for the disgusting pics!",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //--marvel for the new avengers movie
-      {
-        content:{
-          type: "message",
-          data: "4. Marvel: for the new avengers movie",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //--DC for trying :D 
-      {
-        content:{
-          type: "message",
-          data: "& 5. DC for trying :D ",
-        },
-        pre_delay: 200, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //Now, i'll leave you with a slideshow of our more recent pics.
-      {
-        content:{
-          type: "message",
-          data: "Now, I'll leave you with more pictures.",
-        },
-        pre_delay: 4000, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      //enjoi!
-      {
-        content:{
-          type: "message",
-          data: "Enjoy!",
-        },
-        pre_delay: 4000, 
-        post_delay: replyDelay,
-        subtitle: null
-      },
-      {
-        content:{
-          type: "message",
-          data: "{{9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28}}",
-          gap: 2000
-        },
-        pre_delay: 200, 
-        post_delay: (2000 * 19) + (8000),
-        subtitle: null
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
       }
     ]
   },
-  {//offline-jessie
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Jessie", sub: "is already offline."},
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": true,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "Nice!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Let's make this \"Short But Sweet\"!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+          "content":{
+            "type": "message",
+            "data": "Okay, START!"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": null
+        },
+      {
+        "content":{
+          "type": "message",
+          "data": "."
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 3,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "."
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 3,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "."
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 25,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "::hi::"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+          "content":{
+            "type": "message",
+            "data": "Ahemm"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 6,
+          "subtitle": "**Clears Throat**"
+        },
+      {
+        "content":{
+          "type": "message",
+          "data": "Hello Minna-san!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+          "content":{
+            "type": "message",
+            "data": "FIRST."
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Let's Start with some throwbacks."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "{{1,2,3,4,6,7,8}}",
+          "gap": 3000          
+        },
+        "bubble_delay": 0, 
+        "chat_delay_multiple": 0,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Charles Go",
+    "src": "/charles.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "HAHA"
+        },
+        "bubble_delay": 1000, 
+        "chat_delay_multiple": 0.5,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": true,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "::puke::"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "NEXT."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "The group prepared a collaboration message."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "So, here it is...I'll Start."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "Hello Minna👋"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "We are BATCH NINETEEN Cebu!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Christine Ronquillo",
+    "src": "/kuting.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_kuting"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Dennis Alvarez",
+    "src": "/dennis.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_boss"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Bessie mae Carnaje",
+    "src": "/bessie.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_bessie"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Christopher Maister",
+    "src": "/chrish.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_chrish"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Catherine Gallardo Idul",
+    "src": "/cath.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_cath"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Charles Go",
+    "src": "/charles.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_charles"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Emelyn Rañeses",
+    "src": "/em.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_em"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Jan Miranda",
+    "src": "/jp.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_me"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Sheena Egama",
+    "src": "/shine.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_shine"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Jake Laurence Santiago",
+    "src": "/jake.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 1200,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "@profile_jake"
+        },
+        "bubble_delay": 100, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Christine Ronquillo",
+    "src": "/kuting.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "The LAST \"Teen\" batch."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Sheena Egama",
+    "src": "/shine.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+          "content":{
+            "type": "message",
+            "data": "Next is Batch \"Twenty\"."
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 1.5,
+          "subtitle": null
+        },
+        {
+          "content":{
+            "type": "message",
+            "data": "Obviously😜"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": null
+        }
+      ]
+  },
+  {
+    "name": "Christopher Maister",
+    "src": "/chrish.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+          "content":{
+            "type": "message",
+            "data": "Embarked AWS on May 19 (+9)."
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 1.5,
+          "subtitle": null
+        },
+        {
+          "content":{
+            "type": "message",
+            "data": "Which is May 28. 😝#push"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": null
+        }
+      ]
+  },
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 0,
+      "message": [ 
+        {
+          "content":{
+            "type": "message",
+            "data": "HAHAHAHA #pushPaMore"
+          },
+          "bubble_delay": 50, 
+          "chat_delay_multiple": 1.5,
+          "subtitle": null
+        },
+        {
+          "content":{
+            "type": "message",
+            "data": "Oe pagtarung mo!"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": "Let's be serious guys."
+        }
+      ]
+  },
+  {
+    "name": "Charles Go",
+    "src": "/charles.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "Almost 19 weeks of training."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Jake Santiago",
+    "src": "/jake.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "More than 19-hundred days with AWS."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Dennis Alvarez",
+    "src": "/dennis.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "Wrote more than 19K lines of codes (per project)."
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 1.5,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 500,
+      "message": [ 
+        {
+          "content":{
+            "type": "message",
+            "data": "OA"
+          },
+          "bubble_delay": 100, 
+          "chat_delay_multiple": 10,
+          "subtitle": "Over-\"ACTION\"!"
+        }
+      ]
+  },
+  {
+    "name": "Bessie Mae Carnaje",
+    "src": "/bessie.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "With lots of experience!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Jan Miranda",
+    "src": "/jp.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "After 5 years, 1+9 stayed strong!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "name": "Emelyn Rañeses",
+    "src": "/em.jpg",
+    "left": false,
+    "online": true,    
+    "delay": 3000,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "From our 1+9 bottomless hearts💕!"
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": false,
+      "online": true,    
+      "delay": 3000,
+      "message": [ 
+        {
+          "content":{
+            "type": "message",
+            "data": "Thank You AWS 🙇‍🙇‍"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 3,
+          "subtitle": null
+        }
+      ]
+  },
+  {
+    "name": "Kennron Damsid",
+    "src": "/ken.jpg",
+    "left": false,
+    "online": false,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "Cheers!🍻"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 1,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+      "name": "Mark Cordova",
+      "src": "/mark.jpg",
+      "left": false,
+      "online": false,    
+      "delay": 1000,
+      "message": [ 
+        {
+          "content":{
+            "type": "message",
+            "data": "Congrats Again!💪😎"
+          },
+          "bubble_delay": 30, 
+          "chat_delay_multiple": 1,
+          "subtitle": null,
+          "submessage": "Sent from iPhoneX."        
+        }
+      ]
+  },
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 4000,
+      "message": [ 
+        {
+          "content":{
+            "type": "message",
+            "data": "😂"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 3,
+          "subtitle": null
+        }
+      ]
+  },
+  {
+    "name": "Jan Miranda",
+    "src": "/jp.jpg",
+    "left": true,
+    "online": true,    
+    "delay": 0,
+    "message": [ 
+      {
+        "content":{
+          "type": "message",
+          "data": "We done?"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 5,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Pheewww! amazing 5 years, Congrats!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      
+      {
+        "content":{
+          "type": "message",
+          "data": "お疲れ様でしたみんな!"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2.5,
+        "subtitle": null
+      },
+      
+      {
+        "content":{
+          "type": "message",
+          "data": "Before we end, I would like to say thanks to..."
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Kyasu! Thanks sa christmas dinner this 25th."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 1.5,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Bossing! Thank you sa visit 😊. (Chicken Joy🍗 Please🙏)"
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 1.3,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Everyone for their LODI pictures."
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 1.5,
+        "subtitle": "LODI -> IDOL"
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Marvel for the new movie & DC for trying HAHAHA"
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Now, I'll leave you with this photo slide of some VERY AWESOME People 😂."
+        },
+        "bubble_delay": 50, 
+        "chat_delay_multiple": 1.5,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "Enjoy!😊"
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      },
+      {
+        "content":{
+          "type": "message",
+          "data": "{{9,10,12,14,15,17,19,20,21,22,23,24,25,26,27,18,28}}",
+          "gap": 2000
+        },
+        "bubble_delay": 75, 
+        "chat_delay_multiple": 2,
+        "subtitle": null
+      }
+    ]
+  },
+  {
+    "delay": 1000,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Jessie", "sub": "is already offline."}
       }}
     ]
   },  
-  {//offline-mark
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Mark", sub: "is already offline."},
+  {
+    "delay": 1000,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Mark", "sub": "is already offline."}
       }}
     ]
   },  
-  {//offline-ken
-    delay: 5000,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Kennron", sub: "is already offline."},
+  {
+    "delay": 5000,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Kennron", "sub": "is already offline."}
       }}
     ]
-  },  
-  {//offline-cath
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Catherine", sub: "has gone offline."},
+  },
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 2000,
+      "message": [ 
+      {
+          "content":{
+          "type": "message",
+          "data": "もう一度?"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 2,
+          "subtitle": "Once mores times?"
+      }
+      ]
+  },
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Charles", "sub": "has gone offline."}
         }}
     ]
   }, 
-  {//offline-charles
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Charles", sub: "has gone offline."},
-        }}
-    ]
-  }, 
-  {//offline-kuting
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Christine", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Christine", "sub": "has gone offline."}
       }}
     ]
   },  
-  {//offline-jp
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "JP", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "JP", "sub": "has gone offline."}
       }}
     ]
   },  
-  {//offline-jake
-    delay: textDelay,
-    message: [ 
-    {content:{
-        type: "text",
-        data: {text: "Jake", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+    {"content":{
+        "type": "text",
+        "data": {"text": "Jake", "sub": "has gone offline."}
       }}
     ]
   },  
-  {//offline-shine
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Sheena Mae", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Sheena Mae", "sub": "has gone offline."}
         }}
     ]
   },  
-  {//offline-bessie
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Elaine", sub: "has gone offline."},
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 0,
+      "message": [ 
+          {
+              "content":{
+              "type": "message",
+              "data": "Guys?"
+              },
+              "bubble_delay": 75, 
+              "chat_delay_multiple": 2,
+              "subtitle": null
+          }
+      ]
+  },
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Elaine", "sub": "has gone offline."}
         }}
     ]
   },   
-  {//offline-dennis
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Dennis", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Dennis", "sub": "has gone offline."}
         }}
     ]
   },  
-  {//offline-christopher
-    delay: textDelay,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Christopher", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Christopher", "sub": "has gone offline."}
         }}
     ]
   },   
-  {//offline-em
-    delay: 1000,
-    message: [ 
-      {content:{
-          type: "text",
-          data: {text: "Emelyn", sub: "has gone offline."},
+  {
+    "delay": 500,
+    "message": [ 
+      {"content":{
+          "type": "text",
+          "data": {"text": "Emelyn", "sub": "has gone offline."}
         }}
     ]
   },
-];
+  {
+      "name": "Catherine Gallardo Idul",
+      "src": "/cath.jpg",
+      "left": true,
+      "online": true,    
+      "delay": 100,
+      "message": [ 
+          {
+              "content":{
+              "type": "message",
+              "data": "Tsk."
+              },
+              "bubble_delay": 100, 
+              "chat_delay_multiple": 2,
+              "subtitle": null
+          }
+      ]
+  },
+  {
+      "delay": 500,
+      "message": [ 
+          {"content":{
+              "type": "text",
+              "data": {"text": "Catherine", "sub": "has gone offline."}
+          }}
+      ]
+  }
+];*/
 /*********************Scenes************************/
 var Scenes = {
   scenes: [],
@@ -933,10 +1286,13 @@ var Scenes = {
   timeline_sub: 0,
   
   play: ()=>{
+    let speed_adjust = 0.95;
+    let data = App.data;
     let main = Scenes.timeline_main;
     let sub = Scenes.timeline_sub;    
 
     let el = data[main];
+    console.log(el);
 
     let name = el.name || null;
     let left = el.left || false;
@@ -954,9 +1310,10 @@ var Scenes = {
     if(!isEnd && message !== null){
       let subtitle = message.subtitle || null;
       let content = message.content;
-      let pre_delay = message.pre_delay || 0; //bubble loading
-      let post_delay = message.post_delay + pre_delay || 0; //per message
-      let subMessage = message.subMessage;
+
+      let bubble_delay = message.bubble_delay * speed_adjust || 100; //bubble loading
+      let chat_delay_multiple = message.chat_delay_multiple + 1 || 1; //per message
+      let subMessage = message.submessage;
       let subTitle = message.subtitle || null;
       
       switch(content.type){
@@ -967,16 +1324,32 @@ var Scenes = {
         }break;
         case "message":{
           let gap = content.gap || 4000;
-
           console.log("GAP: " + gap);
           App.exposure = gap;
 
+          //Check type of message
+          let msg = content.data || null;
+          let sticker = /::(\w+)::/.exec(msg);
+          let album = /{{([\d,]+)}}/.exec(msg);
+          let photo = /@([\w]+)/.exec(msg);
+          let isMessage = !(sticker !== null || album !== null || photo !== null);
+
+          if(isMessage){
+            bubble_delay *= msg.length;
+          }else if(album !== null){
+            let files = album[1].split(",");
+
+            bubble_delay = 200;
+            chat_delay_multiple = ((gap * 1.40) / bubble_delay) * files.length;
+          }else{
+            chat_delay_multiple = 15;
+          }
+
           //start push it
           if(isStart){
-            let msg = content.data || null;
             Scenes.scenes.push(
               Message.getMessage(
-                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online,  delay: pre_delay,
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online,  delay: bubble_delay,
                   subMessage: subMessage, isFirst: true, subTitle: subTitle}
               )
             );
@@ -984,13 +1357,12 @@ var Scenes = {
           //If not just update it
           else{
             let oldMessage = Scenes.scenes.pop();
-            let msg = content.data || null;
             
             //push
             Scenes.scenes.push(
               Message.updateMessage(
                 oldMessage, 
-                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online, delay: pre_delay,
+                {msg: msg, isLeft: left, name: name, src: avatarSrc, online: online, delay: bubble_delay,
                   subMessage: subMessage, subTitle: subTitle}
               )
             );
@@ -1002,13 +1374,10 @@ var Scenes = {
       m.redraw();
       
       setTimeout(()=>{
-        //hide subs
-        App.hideSubtitle();
-
         //increment
         Scenes.timeline_sub++;
         Scenes.play();
-      }, post_delay);
+      }, bubble_delay * chat_delay_multiple);
 
     }else{
       console.log("End of current sub data.");
@@ -1058,7 +1427,7 @@ var Text = {
 }
 var TopBar = {
   shown: false,
-  popTimeout: 7000,
+  popTimeout: 8000,
   showAll: ()=>{
     let nodes = document.querySelectorAll(".avatar");
 
@@ -1094,33 +1463,26 @@ var TopBar = {
       anime({
         targets: nodes,
         opacity: [
-          { value: 0, duration: 300, easing: 'easeInOutSine' }
+          { value: 0, duration: 200, easing: 'easeInOutSine' }
         ],
         scale: [
-          { value: 0, duration: 1200, easing: 'easeOutElastic' }
+          { value: 0, duration: 800, easing: 'easeOutElastic' }
         ],
         delay: function(target, index) {
-          return index * 300;
+          return index * 200;
         },
         complete: ()=>{
           TopBar.shown = false;
+
+          //show thanks
+          App.showThanks();
         }
       });
 
     }
   }, 
   start: (vnode)=>{
-      //show this
-      let t = document.querySelector(".topBar");
-      anime({
-        targets: t,
-        top: [
-          { value: 0, duration: 300, easing: 'easeInOutSine' }
-        ],
-      });
-
     setTimeout(()=>{
-
       //show children
       TopBar.showAll();
     }, TopBar.popTimeout);
@@ -1132,19 +1494,19 @@ var TopBar = {
         "Batch19"
       ]),
       m(".topBar_center",[
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: basePath + "/jp.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: basePath + "/jake.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src: basePath + "/shine.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: basePath + "/kuting.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: basePath + "/bessie.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: basePath + "/charles.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: basePath + "/cath.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: basePath + "/dennis.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: basePath + "/em.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: basePath + "/chrish.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: basePath + "/mark.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: basePath + "/0.jpg"}),
-        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: basePath + "/ken.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jan Miranda", src: "/jp.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Jake Santiago", src: "/jake.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Sheena Mae Egama", src:"/shine.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christine Ronquillo", src: "/kuting.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Bessie Mae Carnaje", src: "/bessie.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Charles Go", src: "/charles.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Catherine Idul", src: "/cath.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Dennis Alvarez", src: "/dennis.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Emelyn Raneses", src: "/em.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: true, isProfile: true, name: "Christopher Maister", src: "/chrish.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Mark Cordova", src: "/mark.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Kennron Damsin", src: "/ken.jpg"}),
+        m(Avatar, {isLeft: null, isOnline: false, isProfile: true, name: "Jessie De Guia Seva", src: "/0.jpg"}),
       ]),
       m(".topBar_right", "Details"),      
     ]);
@@ -1216,7 +1578,7 @@ var Avatar = {
     return m(".avatar",{
       className: isLeft !== null ? vnode.attrs.isLeft?"avatar_left":"avatar_right":"avatar_inline"
     },[
-      m("img.avatar_image", {src: vnode.attrs.src || basePath + "/0.jpg"}),
+      m("img.avatar_image", {src: basePath + vnode.attrs.src || basePath + "/0.jpg"}),
       m(".avatar_status", {
         className: vnode.attrs.isOnline?"avatar_status_online":"avatar_status_offline"
       }),
@@ -1233,9 +1595,10 @@ var Bubble = {
     let message = bubble.querySelector(".bubble_message");
     let subMessage = bubble.querySelector(".sub_message");
     let animate = vnode.attrs.animate || false;
-    let delay = vnode.attrs.delay / 2;
+    let delay = vnode.attrs.delay;
     let subTitle = vnode.attrs.subTitle;
-
+    let pre_delay = delay;
+    
     let isMessage = vnode.attrs.isMessage;
     let isPhoto = vnode.attrs.isPhoto;
     let isSticker = vnode.attrs.isSticker;
@@ -1246,8 +1609,6 @@ var Bubble = {
     if(image !== null){
       image.addEventListener("load", function() {
         image.style.display = "inline";
-        bubble.style.backgroundColor = "white";      
-        //window.scrollTo(0,document.querySelector("#root").scrollHeight);
       });
     }
     
@@ -1255,6 +1616,9 @@ var Bubble = {
       //Rotate it
       let rotate = vnode.attrs.isLeft ?"bubble_rotate_left":"bubble_rotate_right";
       bubble.classList.add(rotate);
+
+      //hide subs
+      App.hideSubtitle();
 
       setTimeout(()=>{
         //Float it
@@ -1279,7 +1643,7 @@ var Bubble = {
               if(isFirst){
                 App.pop();
               }
-
+              
               //show if there is subtitle
               if(subTitle !== null){
                 App.showSubtitle(subTitle);
@@ -1322,6 +1686,7 @@ var Bubble = {
 
               }else if(isSticker){
                 //resize
+                bubble.style.backgroundColor = "white";                      
                 bubble.classList.add("bubble_sticker");                
 
                 anime({
@@ -1350,8 +1715,8 @@ var Bubble = {
               }              
             }
           });
-        }, delay);
-      }, delay + 100);
+        }, pre_delay); //bubble load
+      }, 500); //bubble twist
     }else{
       dots.style.display = "none";
 
@@ -1483,6 +1848,9 @@ var LoadingDots = {
   } 
 }
 var App = {
+  local: true,
+  data: null,
+
   start: false,
   index: 0,
   images: [],
@@ -1494,11 +1862,28 @@ var App = {
   img2: null,
 
   exposure: 4000,
+  subTimer: 0,
   
   oninit:()=>{
     //load audio
     App.pop_audio = new Audio(basePath + "/pop.mp3");
     App.woosh_audio = new Audio(basePath + "/woosh.mp3");
+
+    //load data
+    if(App.local){
+      //App.data = data;
+      App.data = require(basePath + "/data.json");
+    }else{
+      m.request({
+        method: "GET",
+        url: basePath + "/data.json",
+        background: true,
+      })
+      .then(function(result) {
+        console.log("Loaded!", result);
+        App.data = result;
+      });
+    }
   },
   pop: ()=>{
     App.pop_audio.play();
@@ -1520,6 +1905,17 @@ var App = {
         update: () => window.scroll(0, scroll.y)
       });
   },
+  showThanks: ()=>{
+    let ty = document.querySelector("#thanks");
+    ty.style.display = "block";
+    anime({
+      targets: ty,
+      delay: 1000,
+      duration: 500,
+      opacity: 1,
+      easing: 'easeInOutCubic',
+    });
+  },
   showDimmer: (files)=>{
     console.log("---ShowDimmer---");
 
@@ -1528,18 +1924,18 @@ var App = {
 
     anime({
       targets: [dimmer, slide],
-      duration: 800,
+      duration: 600,
       opacity: 1,
       easing: 'easeInOutCubic',
       delay: function(target, index) {
-        return index * 1000;
+        return index * 600;
       },
     });
     //translate(-50%, -50%) scale(0.5,0.5)
     anime({
       targets: slide,
-      delay: 1300,
-      duration: 1000,
+      delay: 600,
+      duration: 600,
       height: "90%",
       width: "85%",
       easing: 'easeInOutCubic',
@@ -1565,7 +1961,7 @@ var App = {
   },
   kenBurns: ()=>{
     console.log("LOADED!!!", App.img1.src);
-    let wait = (App.exposure - 300);
+    let wait = (App.exposure - 200);
     anime({
       targets: App.img1,
       /*translateX: [
@@ -1577,7 +1973,7 @@ var App = {
       opacity: [
         { value: 0, duration: 0, delay: 0, easing: 'easeInOutSine' },
         { value: 1, duration: 200, delay: 0, easing: 'easeInOutSine' },
-        { value: 0, duration: 300, delay: wait, easing: 'easeInOutSine' },
+        { value: 0, duration: 200, delay: wait, easing: 'easeInOutSine' },
       ],
       scale: [
         { value: 1.08, duration: 0, delay: 0, easing: 'linear' },
@@ -1588,7 +1984,7 @@ var App = {
           App.index++;
 
           if(App.index == App.images.length - 1){
-            App.exposure += 2000;
+            App.exposure += 1000;
           }
 
           App.showImages();
@@ -1647,6 +2043,15 @@ var App = {
         //hide the cover
         cover.style.display = "none";
 
+        //show this
+        let t = document.querySelector(".topBar");
+          anime({
+            targets: t,
+            top: [
+              { value: 0, duration: 300, easing: 'easeInOutSine' }
+            ],
+        });
+
         //start animation
         setTimeout(()=>{
           App.start = true;
@@ -1660,6 +2065,13 @@ var App = {
     let subTitle = document.getElementById("subtitle");
     subTitle.innerHTML = msg;
     subTitle.style.display = "inline-block";
+
+    let delay = 300 * msg.length;
+
+    clearTimeout(App.subTimer);
+    App.subTimer = setTimeout(()=>{
+      App.hideSubtitle();
+    }, delay);
   },
   hideSubtitle: ()=>{
     let subTitle = document.getElementById("subtitle");
@@ -1688,11 +2100,19 @@ var App = {
         },[
         m("#qoute",[
           m("img.qoute_left", {src:basePath + "/qoute_left.svg"}),
-          m("span.msg","Advanced World Systems, Inc. & Advanced World Solutions, Inc.. Thank you for everything, from the bottom of our ❤️s."),
+          m("span.msg",[
+            m("div","Advanced World Systems, Inc. & Advanced World Solutions, Inc.."),
+            m("div","From the bottom of our 💖s,"),
+            m("div","Thank you!")
+          ]),
           m("img.qoute_right", {src:basePath + "/qoute_right.svg"}),
           m(".by", "—— 🅰️ction 🅱️atch 1️⃣9️⃣")
         ])
       ]),
+      m("#thanks", m("span",[
+        m("div","以上です!"),
+        m("div","どうもありがとうございました!")
+      ])),
       m("#subtitle")
     ]);
   }
