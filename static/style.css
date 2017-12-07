@@ -207,7 +207,7 @@ html, body {
     width: 3rem;
     background-color: darksalmon;
     border-radius: 2rem;
-    box-shadow: 0 0 0 2.5px #d8d8d8;
+    box-shadow: 0 0 0 2.5px lightgrey;
     opacity: 0;
     transform: scale(0);
     display: none;
@@ -267,7 +267,7 @@ html, body {
         position: absolute;
         bottom: 0;
         right: -0.1em;
-        box-shadow: 0 0 0 1.5px #d8d8d8;
+        box-shadow: 0 0 0 1.5px lightgrey;
     }
     .avatar_status_online{
         background-color: rgb(66, 183, 42);
@@ -370,8 +370,11 @@ html, body {
         font-weight: bold;
         font-size: 2rem;
     }
+    #thanks span div{
+        width: 30rem;
+    }
 #qoute{
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     left: 50%;
     display: inline-block;
     padding: 1rem;
@@ -391,20 +394,20 @@ html, body {
     }
     #qoute .qoute_right{
         position: absolute;
-        bottom: 0;
-        right: 0rem;
+        top: 2.5rem;
+        right: 0;
     }
     #qoute .qoute_left{
         position: absolute;
-        top: 0rem;
-        left: 0rem;
+        top: 1.5rem;
+        left: 0;
     }
 
     #qoute .by{
         position: absolute;
         right: 2rem;
         bottom: -2rem;
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
 #subtitle{
     font-size: 1.2rem;
@@ -413,11 +416,21 @@ html, body {
     left: 50%;
     transform: translateX(-50%);
     background-color: rgba(0,0,0,0.8);
-    padding: 0.3rem;
+    padding: 0.5rem;
     color: lightgray;
     display: none;
     text-align: center;
 }
+
+#confetti{
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
 
 /* Animations */
 @keyframes float {

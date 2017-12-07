@@ -1,1283 +1,16 @@
 import m from "./mithril.js"
 import anime from './anime.js'
+import conf from './confetti.js'
 
 /*********************Constants************************/
 //https://url.janmir.me/batch19/static
-//const basePath =  "./static";
-const basePath =  "http://batch19.janmir.me.s3-website-ap-northeast-1.amazonaws.com/static";
+const basePath =  "./static";
+//const basePath =  "http://batch19.janmir.me.s3-website-ap-northeast-1.amazonaws.com/static";
 
 /*********************SVGs************************/
 import back from './static/back.svg';
+import { setTimeout } from "timers";
 
-/*********************Data************************/
-const replyDelay = 2000;
-const textDelay = 200;
-/*const data = [
-  {
-    "delay": 2000,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Catherine", "sub": "forcefully \"onlined\" herself."}
-      }}
-    ]
-  },  
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": true,
-    "online": true,
-    "delay": 2000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "LOL😂"
-        },
-        "bubble_delay": 75,
-        "chat_delay_multiple": 2,
-        "subtitle": "Laugh-Out-Loud"
-      }
-    ]
-  },
-  {
-    "name": "Kennron Damsid",
-    "src": "/ken.jpg",
-    "left": false,
-    "online": false,    
-    "delay": 2000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "😱????"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": "What?"
-      }
-    ]
-  },
-  {
-    "delay": 200,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Christine", "sub": "is now online."}
-      }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Jp", "sub": "is now online."}
-      }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Jake", "sub": "is now online."}
-      }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Sheena Mae", "sub": "is now online."}
-        }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Bessie Mae", "sub": "is now online."}
-        }}
-    ]
-  },   
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Dennis", "sub": "is now online."}
-        }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Christopher", "sub": "is now online."}
-        }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Charles", "sub": "is now online."}
-        }}
-    ]
-  },  
-  {
-    "delay": 200,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Emelyn", "sub": "is now online."}
-        }}
-    ]
-  },  
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": true,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Hoy, mga ate og kuya!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": "Ladies and Gentlemen!"
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Happy 5-Years! 😊"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Nangita na Admin sa atong e-present bah."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": "Admin is already asking for our presentation."
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "But, before I send it."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Can we practice one more time? 😰🙏"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2
-      }
-    ]
-  },
-  {
-    "name": "Mark Cordova",
-    "src": "/mark.jpg",
-    "left": false,
-    "online": false,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "HAHAHAHA📱🤑! Congrats mga Migs!"
-        },
-        "bubble_delay": 30, 
-        "chat_delay_multiple": 1.5,
-        "subtitle": null,
-        "submessage": "Sent from iPhoneX."        
-      }
-    ]
-  },
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": true,
-    "online": true,    
-    "delay": 500,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Hubag-hubagan ko."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": "I feel nervous...😰"
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Ready nata?"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": "We ready?"
-      }
-    ]
-  },
-  {
-    "name": "Christopher Maister",
-    "src": "/chrish.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Yeah, whatever."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Dennis Alvarez",
-    "src": "/dennis.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "::trap::"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Christine Ronquillo",
-    "src": "/kuting.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1200,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "::like::"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Jan Paul Miranda",
-    "src": "/jp.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 2000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "::noooo::"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": true,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Nice!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Let's make this \"Short But Sweet\"!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-          "content":{
-            "type": "message",
-            "data": "Okay, START!"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": null
-        },
-      {
-        "content":{
-          "type": "message",
-          "data": "."
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 3,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "."
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 3,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "."
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 25,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "::hi::"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-          "content":{
-            "type": "message",
-            "data": "Ahemm"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 6,
-          "subtitle": "**Clears Throat**"
-        },
-      {
-        "content":{
-          "type": "message",
-          "data": "Hello Minna-san!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-          "content":{
-            "type": "message",
-            "data": "FIRST."
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Let's Start with some throwbacks."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "{{1,2,3,4,6,7,8}}",
-          "gap": 3000          
-        },
-        "bubble_delay": 0, 
-        "chat_delay_multiple": 0,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Charles Go",
-    "src": "/charles.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "HAHA"
-        },
-        "bubble_delay": 1000, 
-        "chat_delay_multiple": 0.5,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": true,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "::puke::"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "NEXT."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "The group prepared a collaboration message."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "So, here it is...I'll Start."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Hello Minna👋"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "We are BATCH NINETEEN Cebu!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Christine Ronquillo",
-    "src": "/kuting.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_kuting"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Dennis Alvarez",
-    "src": "/dennis.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_boss"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Bessie mae Carnaje",
-    "src": "/bessie.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_bessie"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Christopher Maister",
-    "src": "/chrish.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_chrish"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Catherine Gallardo Idul",
-    "src": "/cath.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_cath"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Charles Go",
-    "src": "/charles.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_charles"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Emelyn Rañeses",
-    "src": "/em.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_em"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Jan Miranda",
-    "src": "/jp.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_me"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Sheena Egama",
-    "src": "/shine.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_shine"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Jake Laurence Santiago",
-    "src": "/jake.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 1200,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "@profile_jake"
-        },
-        "bubble_delay": 100, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Christine Ronquillo",
-    "src": "/kuting.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "The LAST \"Teen\" batch."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Sheena Egama",
-    "src": "/shine.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-          "content":{
-            "type": "message",
-            "data": "Next is Batch \"Twenty\"."
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 1.5,
-          "subtitle": null
-        },
-        {
-          "content":{
-            "type": "message",
-            "data": "Obviously😜"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": null
-        }
-      ]
-  },
-  {
-    "name": "Christopher Maister",
-    "src": "/chrish.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-          "content":{
-            "type": "message",
-            "data": "Embarked AWS on May 19 (+9)."
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 1.5,
-          "subtitle": null
-        },
-        {
-          "content":{
-            "type": "message",
-            "data": "Which is May 28. 😝#push"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": null
-        }
-      ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 0,
-      "message": [ 
-        {
-          "content":{
-            "type": "message",
-            "data": "HAHAHAHA #pushPaMore"
-          },
-          "bubble_delay": 50, 
-          "chat_delay_multiple": 1.5,
-          "subtitle": null
-        },
-        {
-          "content":{
-            "type": "message",
-            "data": "Oe pagtarung mo!"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": "Let's be serious guys."
-        }
-      ]
-  },
-  {
-    "name": "Charles Go",
-    "src": "/charles.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Almost 19 weeks of training."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Jake Santiago",
-    "src": "/jake.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "More than 19-hundred days with AWS."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Dennis Alvarez",
-    "src": "/dennis.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Wrote more than 19K lines of codes (per project)."
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 1.5,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 500,
-      "message": [ 
-        {
-          "content":{
-            "type": "message",
-            "data": "OA"
-          },
-          "bubble_delay": 100, 
-          "chat_delay_multiple": 10,
-          "subtitle": "Over-\"ACTION\"!"
-        }
-      ]
-  },
-  {
-    "name": "Bessie Mae Carnaje",
-    "src": "/bessie.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "With lots of experience!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Jan Miranda",
-    "src": "/jp.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "After 5 years, 1+9 stayed strong!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "name": "Emelyn Rañeses",
-    "src": "/em.jpg",
-    "left": false,
-    "online": true,    
-    "delay": 3000,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "From our 1+9 bottomless hearts💕!"
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": false,
-      "online": true,    
-      "delay": 3000,
-      "message": [ 
-        {
-          "content":{
-            "type": "message",
-            "data": "Thank You AWS 🙇‍🙇‍"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 3,
-          "subtitle": null
-        }
-      ]
-  },
-  {
-    "name": "Kennron Damsid",
-    "src": "/ken.jpg",
-    "left": false,
-    "online": false,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "Cheers!🍻"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 1,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-      "name": "Mark Cordova",
-      "src": "/mark.jpg",
-      "left": false,
-      "online": false,    
-      "delay": 1000,
-      "message": [ 
-        {
-          "content":{
-            "type": "message",
-            "data": "Congrats Again!💪😎"
-          },
-          "bubble_delay": 30, 
-          "chat_delay_multiple": 1,
-          "subtitle": null,
-          "submessage": "Sent from iPhoneX."        
-        }
-      ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 4000,
-      "message": [ 
-        {
-          "content":{
-            "type": "message",
-            "data": "😂"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 3,
-          "subtitle": null
-        }
-      ]
-  },
-  {
-    "name": "Jan Miranda",
-    "src": "/jp.jpg",
-    "left": true,
-    "online": true,    
-    "delay": 0,
-    "message": [ 
-      {
-        "content":{
-          "type": "message",
-          "data": "We done?"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 5,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Pheewww! amazing 5 years, Congrats!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      
-      {
-        "content":{
-          "type": "message",
-          "data": "お疲れ様でしたみんな!"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2.5,
-        "subtitle": null
-      },
-      
-      {
-        "content":{
-          "type": "message",
-          "data": "Before we end, I would like to say thanks to..."
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Kyasu! Thanks sa christmas dinner this 25th."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 1.5,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Bossing! Thank you sa visit 😊. (Chicken Joy🍗 Please🙏)"
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 1.3,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Everyone for their LODI pictures."
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 1.5,
-        "subtitle": "LODI -> IDOL"
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Marvel for the new movie & DC for trying HAHAHA"
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Now, I'll leave you with this photo slide of some VERY AWESOME People 😂."
-        },
-        "bubble_delay": 50, 
-        "chat_delay_multiple": 1.5,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "Enjoy!😊"
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      },
-      {
-        "content":{
-          "type": "message",
-          "data": "{{9,10,12,14,15,17,19,20,21,22,23,24,25,26,27,18,28}}",
-          "gap": 2000
-        },
-        "bubble_delay": 75, 
-        "chat_delay_multiple": 2,
-        "subtitle": null
-      }
-    ]
-  },
-  {
-    "delay": 1000,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Jessie", "sub": "is already offline."}
-      }}
-    ]
-  },  
-  {
-    "delay": 1000,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Mark", "sub": "is already offline."}
-      }}
-    ]
-  },  
-  {
-    "delay": 5000,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Kennron", "sub": "is already offline."}
-      }}
-    ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 2000,
-      "message": [ 
-      {
-          "content":{
-          "type": "message",
-          "data": "もう一度?"
-          },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
-          "subtitle": "Once mores times?"
-      }
-      ]
-  },
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Charles", "sub": "has gone offline."}
-        }}
-    ]
-  }, 
-  {
-    "delay": 500,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Christine", "sub": "has gone offline."}
-      }}
-    ]
-  },  
-  {
-    "delay": 500,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "JP", "sub": "has gone offline."}
-      }}
-    ]
-  },  
-  {
-    "delay": 500,
-    "message": [ 
-    {"content":{
-        "type": "text",
-        "data": {"text": "Jake", "sub": "has gone offline."}
-      }}
-    ]
-  },  
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Sheena Mae", "sub": "has gone offline."}
-        }}
-    ]
-  },  
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 0,
-      "message": [ 
-          {
-              "content":{
-              "type": "message",
-              "data": "Guys?"
-              },
-              "bubble_delay": 75, 
-              "chat_delay_multiple": 2,
-              "subtitle": null
-          }
-      ]
-  },
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Elaine", "sub": "has gone offline."}
-        }}
-    ]
-  },   
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Dennis", "sub": "has gone offline."}
-        }}
-    ]
-  },  
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Christopher", "sub": "has gone offline."}
-        }}
-    ]
-  },   
-  {
-    "delay": 500,
-    "message": [ 
-      {"content":{
-          "type": "text",
-          "data": {"text": "Emelyn", "sub": "has gone offline."}
-        }}
-    ]
-  },
-  {
-      "name": "Catherine Gallardo Idul",
-      "src": "/cath.jpg",
-      "left": true,
-      "online": true,    
-      "delay": 100,
-      "message": [ 
-          {
-              "content":{
-              "type": "message",
-              "data": "Tsk."
-              },
-              "bubble_delay": 100, 
-              "chat_delay_multiple": 2,
-              "subtitle": null
-          }
-      ]
-  },
-  {
-      "delay": 500,
-      "message": [ 
-          {"content":{
-              "type": "text",
-              "data": {"text": "Catherine", "sub": "has gone offline."}
-          }}
-      ]
-  }
-];*/
 /*********************Scenes************************/
 var Scenes = {
   scenes: [],
@@ -1286,7 +19,7 @@ var Scenes = {
   timeline_sub: 0,
   
   play: ()=>{
-    let speed_adjust = 0.95;
+    let speed_adjust = 0.93;
     let data = App.data;
     let main = Scenes.timeline_main;
     let sub = Scenes.timeline_sub;    
@@ -1334,13 +67,24 @@ var Scenes = {
           let photo = /@([\w]+)/.exec(msg);
           let isMessage = !(sticker !== null || album !== null || photo !== null);
 
+          //start playing
+          if(msg == "FIRST."){
+            setTimeout(()=>{
+              App.wish_audio.play();
+            }, 1500);
+          }else if(msg.includes("Enjoy!")){
+            setTimeout(()=>{
+              App.ost_audio.play();
+            }, 3250);
+          }
+
           if(isMessage){
             bubble_delay *= msg.length;
           }else if(album !== null){
             let files = album[1].split(",");
 
             bubble_delay = 200;
-            chat_delay_multiple = ((gap * 1.40) / bubble_delay) * files.length;
+            chat_delay_multiple = ((gap * 1.35) / bubble_delay) * files.length;
           }else{
             chat_delay_multiple = 15;
           }
@@ -1409,11 +153,11 @@ var Scenes = {
 var Text = {
   oncreate: (vnode)=>{
     let els = vnode.dom;
-    let duration = vnode.attrs.delay / 2;
+    let duration = 200;//vnode.attrs.delay / 2;
     anime({
       targets: els,
       opacity: [
-        { value: 1, duration: duration, easing: 'easeInOutSine' }
+        { value: 1, duration: duration, easing: 'linear' }
       ]
     });
   },
@@ -1640,9 +384,9 @@ var Bubble = {
               dots.style.display = "none";
 
               //play pop
-              if(isFirst){
-                App.pop();
-              }
+              //if(isFirst){
+              App.pop();
+              //}
               
               //show if there is subtitle
               if(subTitle !== null){
@@ -1857,6 +601,9 @@ var App = {
 
   pop_audio: null,
   woosh_audio: null,
+  applause_audio: null,
+  wish_audio: null,
+  ost_audio: null,
 
   img1: null,
   img2: null,
@@ -1868,7 +615,10 @@ var App = {
     //load audio
     App.pop_audio = new Audio(basePath + "/pop.mp3");
     App.woosh_audio = new Audio(basePath + "/woosh.mp3");
-
+    App.applause_audio = new Audio(basePath + "/applause.mp3"); 
+    App.wish_audio = new Audio(basePath + "/wish.mp3"); 
+    App.ost_audio = new Audio(basePath + "/ost.mp3"); 
+    
     //load data
     if(App.local){
       //App.data = data;
@@ -1886,6 +636,7 @@ var App = {
     }
   },
   pop: ()=>{
+    App.pop_audio.currentTime=0;
     App.pop_audio.play();
   },
   scrollTop: ()=>{
@@ -1900,7 +651,7 @@ var App = {
         targets: scroll,
         y: height,
         //delay: 200,
-        duration: 500,
+        duration: 400,
         easing: 'easeInOutCubic',
         update: () => window.scroll(0, scroll.y)
       });
@@ -1914,11 +665,13 @@ var App = {
       duration: 500,
       opacity: 1,
       easing: 'easeInOutCubic',
+      complete: ()=>{
+        //App.toggleConfetti();
+      }
     });
   },
   showDimmer: (files)=>{
     console.log("---ShowDimmer---");
-
     let dimmer = document.querySelector("#dimmer");
     let slide = document.querySelector("#slide");
 
@@ -1984,12 +737,24 @@ var App = {
           App.index++;
 
           if(App.index == App.images.length - 1){
-            App.exposure += 1000;
+            let isFinal = App.exposure <= 2000;
+            let pluser = !isFinal ? 1000: 4000;
+
+            App.exposure += pluser;
+
+            //show confetti
+            if(isFinal){
+              App.showConfetti();
+              //App.applause_audio.play();
+            }
           }
 
           App.showImages();
         }else{
           App.hideSlide();
+
+          //hide
+          App.toggleConfetti();
         }
       }
     });
@@ -2077,6 +842,21 @@ var App = {
     let subTitle = document.getElementById("subtitle");
     subTitle.style.display = "none";
   },
+  showConfetti:()=>{
+    console.log("SHOW CONFETTI!!!");
+    conf.confetti();
+  },
+  toggleConfetti:()=>{
+    conf.mp = 8;//conf.mp > 0 ? 0:200;
+    setTimeout(()=>{
+      conf.mp = 100;
+    }, 38000);
+  },
+  oncreate:()=>{
+    //setTimeout(App.showConfetti, 5000);
+    //App.showConfetti();
+    //App.wish_audio.play();
+  },
   view: (vnode)=>{
     console.log("Redraw:", vnode);
     
@@ -2093,6 +873,7 @@ var App = {
       m("#slide",[
         //m("img.img2"),
         m("img.img1"),
+        //<canvas id="grafitti"></canvas>
       ]),
       App.start ? null:m("#cover",
         {
@@ -2113,7 +894,8 @@ var App = {
         m("div","以上です!"),
         m("div","どうもありがとうございました!")
       ])),
-      m("#subtitle")
+      m("#subtitle"),
+      m("canvas#confetti")      
     ]);
   }
 }
