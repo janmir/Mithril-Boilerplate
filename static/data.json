@@ -468,7 +468,7 @@
         {
           "content":{
             "type": "message",
-            "data": "So, here it is...I'll Start."
+            "data": "So, here it is.. I'll Start."
           },
           "bubble_delay": 75, 
           "chat_delay_multiple": 2,

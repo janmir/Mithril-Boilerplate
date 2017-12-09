@@ -9,7 +9,7 @@ const basePath =  "./static";
 
 /*********************SVGs************************/
 import back from './static/back.svg';
-import { setTimeout } from "timers";
+import { setTimeout, setInterval } from "timers";
 
 /*********************Scenes************************/
 var Scenes = {
@@ -621,16 +621,28 @@ var App = {
   subTimer: 0,
   
   images: [],
+  interval: null,
 
+  check: (e,count)=>{
+    let subTitle = document.getElementById("subtitle");    
+    let done = 6;
+    count += 1;
+
+    console.log("%cAudio " + e.path[0].src + " loaded.", "color: orange");
+
+    if(count == 2  ){
+      subTitle.innerHTML = ".";
+    }else if(count == 4){
+      subTitle.innerHTML = "..";
+    }else if(count == 4){
+      subTitle.innerHTML = "...";
+    }else if(count > done-1){
+      return true;
+    }
+
+    return false;
+  },
   oninit:()=>{
-    //load audio
-    App.pop_audio = new Audio(basePath + "/pop.mp3");
-    App.woosh_audio = new Audio(basePath + "/woosh.mp3");
-    App.ting_audio = new Audio(basePath + "/ting.mp3"); 
-    App.tong_audio = new Audio(basePath + "/tong.mp3"); 
-    App.wish_audio = new Audio(basePath + "/wish.mp3"); 
-    App.ost_audio = new Audio(basePath + "/ost.mp3"); 
-    
     //load data
     if(App.local){
       //App.data = data;
@@ -646,44 +658,77 @@ var App = {
         App.data = result;
       });
     }
-    
-    //preload images
-    let counter = 0;
-    let images = [25, "profile_me", "profile_shine", "profile_kuting", "profile_charles", "profile_chrish",
-                  "profile_bessie", "profile_boss", "profile_em", "profile_jake", "profile_cath", "cath",
-                  "charles", "bessie", "chrish", "dennis", "em", "jake", "jp", "ken", "kuting", "mark", "shine"];
-    images.forEach(img=>{
-      let type = typeof img;
+  },
+  preload:()=>{
+    let count = 0;
+    let subTitle = document.getElementById("subtitle");
 
-      switch(type){
-        case "number":{
-          for(var j=1;j<=img;j++){
+    subTitle.style.display = "inline-block";
+    
+    //load audio
+    App.pop_audio = new Audio(basePath + "/pop.mp3");
+    App.woosh_audio = new Audio(basePath + "/woosh.mp3");
+    App.ting_audio = new Audio(basePath + "/ting.mp3"); 
+    App.tong_audio = new Audio(basePath + "/tong.mp3"); 
+
+    App.wish_audio = new Audio(basePath + "/wish.mp3"); 
+    App.ost_audio = new Audio(basePath + "/ost.mp3"); 
+
+    new Promise(function(resolve) {
+      App.pop_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+      App.woosh_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+      App.ting_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+      App.tong_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+      App.wish_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+      App.ost_audio.addEventListener("canplaythrough", (e)=>{if(App.check(e,count++)){resolve()}}, true);
+    }).then(()=>{
+      clearInterval(App.interval);      
+      console.log("All Audio Assets Loaded.");
+
+      //preload images
+      let counter = 0;
+      let images = [25, "profile_me", "profile_shine", "profile_kuting", "profile_charles", "profile_chrish",
+                    "profile_bessie", "profile_boss", "profile_em", "profile_jake", "profile_cath", "cath",
+                    "charles", "bessie", "chrish", "dennis", "em", "jake", "jp", "ken", "kuting", "mark", "shine"];
+      images.forEach(img=>{
+        let type = typeof img;
+
+        switch(type){
+          case "number":{
+            for(var j=1;j<=img;j++){
+              let i = new Image();
+              i.src = basePath + "/" + j + ".jpg";
+              i.onload = (img)=>{
+                console.log("%cImage " + img.path[0].src + " loaded.", "color: green");
+                counter++;
+              }      
+            }
+          }break;
+          default:{
             let i = new Image();
-            i.src = basePath + "/" + j + ".jpg";
+            i.src = basePath + "/" + img + ".jpg";
             i.onload = (img)=>{
               console.log("%cImage " + img.path[0].src + " loaded.", "color: green");
               counter++;
-              App.showSubtitle("...");
-            }      
-          }
-        }break;
-        default:{
-          let i = new Image();
-          i.src = basePath + "/" + img + ".jpg";
-          i.onload = (img)=>{
-            console.log("%cImage " + img.path[0].src + " loaded.", "color: green");
-            counter++;
-            App.showSubtitle("....");
-            
-            if(counter == (images[0] + images.length - 1)){
-              console.log("Preload Done!!!");
-              App.showSubtitle("Assets Preload Done!");
-            }
-          }          
-        }break;
-      }
-    });
+              subTitle.innerHTML = "....";
+              
+              if(counter == (images[0] + images.length - 1)){
+                console.log("All Image Assets Loaded.");
+                subTitle.innerHTML = "Assets Preload Done!";
 
+                setTimeout(()=>{
+                  subTitle.innerHTML = "Turn ON sounds, please.";
+
+                  setTimeout(()=>{
+                    subTitle.style.display = "none";
+                  },2000);
+                },1000);
+              }
+            }          
+          }break;
+        }
+      });
+    });
   },
   pop: ()=>{
     App.pop_audio.currentTime=0;
@@ -905,6 +950,8 @@ var App = {
     //setTimeout(App.showConfetti, 5000);
     //App.showConfetti();
     //App.wish_audio.play();
+
+    App.preload();
   },
   view: (vnode)=>{
     console.log("Redraw:", vnode);
