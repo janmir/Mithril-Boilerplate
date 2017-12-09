@@ -68,10 +68,10 @@ var Scenes = {
           let isMessage = !(sticker !== null || album !== null || photo !== null);
 
           //start playing
-          if(msg == "FIRST."){
+          if(msg == "First."){
             setTimeout(()=>{
               App.wish_audio.play();
-            }, 1500);
+            }, 1700);
           }else if(msg.includes("Enjoy!")){
             setTimeout(()=>{
               App.ost_audio.play();
@@ -160,6 +160,14 @@ var Text = {
         { value: 1, duration: duration, easing: 'linear' }
       ]
     });
+
+    if(vnode.attrs.sub.includes("online")){
+      App.ting_audio.currentTime = 0;
+      App.ting_audio.play();
+    }else{
+      App.tong_audio.currentTime = 0;
+      App.tong_audio.play();  
+    }
   },
   view: (vnode)=>{
     return m(".text", [
@@ -171,7 +179,7 @@ var Text = {
 }
 var TopBar = {
   shown: false,
-  popTimeout: 8000,
+  popTimeout: 9000,
   showAll: ()=>{
     let nodes = document.querySelectorAll(".avatar");
 
@@ -183,10 +191,10 @@ var TopBar = {
         ],
         scale: [
           { value: 0, duration: 0, easing: 'easeInOutSine' },
-          { value: 1, duration: 1200, delay: 10, easing: 'easeOutElastic' }
+          { value: 1, duration: 1000, delay: 10, easing: 'easeOutElastic' }
         ],
         delay: function(target, index) {
-          return index * 100;
+          return index * 200;
         },
         complete: ()=>{
           TopBar.shown = true;
@@ -601,7 +609,8 @@ var App = {
 
   pop_audio: null,
   woosh_audio: null,
-  applause_audio: null,
+  ting_audio: null,
+  tong_audio: null,
   wish_audio: null,
   ost_audio: null,
 
@@ -611,11 +620,14 @@ var App = {
   exposure: 4000,
   subTimer: 0,
   
+  images: [],
+
   oninit:()=>{
     //load audio
     App.pop_audio = new Audio(basePath + "/pop.mp3");
     App.woosh_audio = new Audio(basePath + "/woosh.mp3");
-    App.applause_audio = new Audio(basePath + "/applause.mp3"); 
+    App.ting_audio = new Audio(basePath + "/ting.mp3"); 
+    App.tong_audio = new Audio(basePath + "/tong.mp3"); 
     App.wish_audio = new Audio(basePath + "/wish.mp3"); 
     App.ost_audio = new Audio(basePath + "/ost.mp3"); 
     
@@ -634,6 +646,44 @@ var App = {
         App.data = result;
       });
     }
+    
+    //preload images
+    let counter = 0;
+    let images = [25, "profile_me", "profile_shine", "profile_kuting", "profile_charles", "profile_chrish",
+                  "profile_bessie", "profile_boss", "profile_em", "profile_jake", "profile_cath", "cath",
+                  "charles", "bessie", "chrish", "dennis", "em", "jake", "jp", "ken", "kuting", "mark", "shine"];
+    images.forEach(img=>{
+      let type = typeof img;
+
+      switch(type){
+        case "number":{
+          for(var j=1;j<=img;j++){
+            let i = new Image();
+            i.src = basePath + "/" + j + ".jpg";
+            i.onload = (img)=>{
+              console.log("%cImage " + img.path[0].src + " loaded.", "color: green");
+              counter++;
+              App.showSubtitle("...");
+            }      
+          }
+        }break;
+        default:{
+          let i = new Image();
+          i.src = basePath + "/" + img + ".jpg";
+          i.onload = (img)=>{
+            console.log("%cImage " + img.path[0].src + " loaded.", "color: green");
+            counter++;
+            App.showSubtitle("....");
+            
+            if(counter == (images[0] + images.length - 1)){
+              console.log("Preload Done!!!");
+              App.showSubtitle("Assets Preload Done!");
+            }
+          }          
+        }break;
+      }
+    });
+
   },
   pop: ()=>{
     App.pop_audio.currentTime=0;
@@ -745,7 +795,6 @@ var App = {
             //show confetti
             if(isFinal){
               App.showConfetti();
-              //App.applause_audio.play();
             }
           }
 
@@ -850,7 +899,7 @@ var App = {
     conf.mp = 8;//conf.mp > 0 ? 0:200;
     setTimeout(()=>{
       conf.mp = 100;
-    }, 38000);
+    }, 39000);
   },
   oncreate:()=>{
     //setTimeout(App.showConfetti, 5000);
@@ -895,7 +944,7 @@ var App = {
         m("div","どうもありがとうございました!")
       ])),
       m("#subtitle"),
-      m("canvas#confetti")      
+      m("canvas#confetti"),
     ]);
   }
 }

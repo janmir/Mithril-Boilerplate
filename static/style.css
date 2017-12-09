@@ -205,7 +205,7 @@ html, body {
 .avatar{
     height: 3rem;
     width: 3rem;
-    background-color: darksalmon;
+    background-color: gray;
     border-radius: 2rem;
     box-shadow: 0 0 0 2.5px lightgrey;
     opacity: 0;

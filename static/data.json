@@ -155,8 +155,8 @@
             "type": "message",
             "data": "Nangita na Admin sa atong e-present bah."
           },
-          "bubble_delay": 75, 
-          "chat_delay_multiple": 2,
+          "bubble_delay": 60, 
+          "chat_delay_multiple": 2.5,
           "subtitle": "Admin is already asking for our presentation."
         },
         {
@@ -314,7 +314,7 @@
         {
           "content":{
             "type": "message",
-            "data": "Let's make this \"Short But Sweet\"."
+            "data": "Let's make this \"Short but Sweet\"."
           },
           "bubble_delay": 60, 
           "chat_delay_multiple": 2,
@@ -359,21 +359,21 @@
         {
           "content":{
             "type": "message",
+            "data": "Ahemm"
+          },
+          "bubble_delay": 75, 
+          "chat_delay_multiple": 6,
+          "subtitle": "**Clears Throat**"
+        },
+        {
+          "content":{
+            "type": "message",
             "data": "::hi::"
           },
           "bubble_delay": 75, 
           "chat_delay_multiple": 2,
           "subtitle": null
         },
-        {
-            "content":{
-              "type": "message",
-              "data": "Ahemm"
-            },
-            "bubble_delay": 75, 
-            "chat_delay_multiple": 6,
-            "subtitle": "**Clears Throat**"
-          },
         {
           "content":{
             "type": "message",
@@ -386,7 +386,7 @@
         {
             "content":{
               "type": "message",
-              "data": "FIRST."
+              "data": "First."
             },
             "bubble_delay": 75, 
             "chat_delay_multiple": 2,
@@ -395,7 +395,7 @@
         {
           "content":{
             "type": "message",
-            "data": "Let's Start with some throwbacks."
+            "data": "Let's start with some throwbacks."
           },
           "bubble_delay": 60, 
           "chat_delay_multiple": 2.3,
@@ -404,7 +404,7 @@
         {
           "content":{
             "type": "message",
-            "data": "{{1,2,3,4,6,7,8}}",
+            "data": "{{1,2,3,4,5,6,7}}",
             "gap": 3000          
           },
           "bubble_delay": 0, 
@@ -450,7 +450,7 @@
         {
           "content":{
             "type": "message",
-            "data": "NEXT."
+            "data": "Next."
           },
           "bubble_delay": 75, 
           "chat_delay_multiple": 2,
@@ -693,7 +693,7 @@
         {
           "content":{
             "type": "message",
-            "data": "The LAST \"TEEN\" batch."
+            "data": "The last \"TEEN\" batch."
           },
           "bubble_delay": 60, 
           "chat_delay_multiple": 2,
@@ -711,7 +711,7 @@
         {
             "content":{
               "type": "message",
-              "data": "Next is Batch \"Twenty\"."
+              "data": "Next batch is \"TWENTY\"."
             },
             "bubble_delay": 60, 
             "chat_delay_multiple": 1,
@@ -850,7 +850,7 @@
             },
             "bubble_delay": 100, 
             "chat_delay_multiple": 10,
-            "subtitle": "Over-\"ACTION\"!"
+            "subtitle": "Over-ACTION!"
           }
         ]
     },
@@ -938,7 +938,7 @@
             "type": "message",
             "data": "Wow! Cheers!🍻"
           },
-          "bubble_delay": 60, 
+          "bubble_delay": 40, 
           "chat_delay_multiple": 1,
           "subtitle": null
         }
@@ -975,8 +975,8 @@
               "type": "message",
               "data": "😂"
             },
-            "bubble_delay": 75, 
-            "chat_delay_multiple": 3,
+            "bubble_delay": 50, 
+            "chat_delay_multiple": 3.5,
             "subtitle": null
           }
         ]
@@ -1083,7 +1083,7 @@
         {
           "content":{
             "type": "message",
-            "data": "{{9,10,12,14,15,17,19,20,21,22,23,24,25,26,27,55,18,28}}",
+            "data": "{{8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}}",
             "gap": 1950
           },
           "bubble_delay": 75, 
@@ -1241,7 +1241,7 @@
         "src": "/cath.jpg",
         "left": true,
         "online": true,    
-        "delay": 800,
+        "delay": 1200,
         "message": [ 
             {
                 "content":{
